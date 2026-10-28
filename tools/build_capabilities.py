@@ -1,4 +1,4 @@
-"""Rebuild the public one-page course-development overview with ReportLab."""
+"""Rebuild the public one-page curriculum services overview with ReportLab."""
 
 from pathlib import Path
 from reportlab.lib import colors
@@ -22,9 +22,9 @@ styles = {
     "heading": ParagraphStyle("heading", fontName="Helvetica-Bold", fontSize=13, leading=17, textColor=INK),
 }
 c = canvas.Canvas(str(OUTPUT), pagesize=(612, 792), pageCompression=1)
-c.setTitle("Access Curriculum & Technology | Computing Course Development")
+c.setTitle("Access Curriculum & Technology | Curriculum Services")
 c.setAuthor("Alex Shaw and Baha Marupov | Access Curriculum & Technology")
-c.setSubject("Software and teaching expertise to modernize or create computing courses")
+c.setSubject("Course and program reviews, new computing courses, and the Annual Curriculum Partnership")
 c.setFillColor(PAPER)
 c.rect(0, 0, 612, 792, fill=1, stroke=0)
 c.setFillColor(TEAL)
@@ -62,29 +62,35 @@ c.setFont("Times-Italic", 32)
 c.drawString(42, 634, "computing courses.")
 y = paragraph(
     "Alex Shaw and Baha Marupov are software professionals and college educators. "
-    "We help faculty update computing courses or create new ones - with practical "
-    "projects, clear assessments, and materials ready to teach.", 42, 614, 528,
+    "We help colleges update computing courses and programs, and create new courses.",
+    42, 614, 528,
 )
 
-top = y - 20
-paragraph("WHY ACCESS EXISTS", 42, top, 528, "label")
 y = paragraph(
-    "While teaching at colleges, Alex and Baha saw a recurring challenge: technology "
-    "changes quickly, but keeping courses current takes time that faculty must balance "
-    "with teaching and supporting students. Access exists to help with that work.",
-    42, top - 19, 528,
+    "While teaching at colleges, we saw how quickly technology changes - and how much "
+    "work it takes to keep courses current while teaching and supporting students. "
+    "Access exists to help with that work.", 42, y - 12, 528,
 )
 y = paragraph(
     "College budgets can also make it difficult to match the salaries offered by technology companies.",
     42, y - 7, 528, "small",
 )
 
-top = y - 20
-paragraph("TWO WAYS WE CAN HELP", 42, top, 528, "label")
+top = y - 18
+paragraph("THREE WAYS WE CAN HELP", 42, top, 528, "label")
 top -= 22
 services = [
-    ("Modernize an existing course", "Review the syllabus and existing materials. Update technologies, examples, and applied projects. Refine assessments, rubrics, and instructor guidance."),
-    ("Create a new computing course", "Set learning goals, prerequisites, and a course plan. Build lessons, labs, projects, and assessments. Prepare editable teaching materials and guidance for faculty."),
+    (
+        "Review and update<br/>courses and programs",
+        "A defined project reviews content, tools, learning goals, prerequisites, and "
+        "course sequence. Receive a prioritized plan and agreed revisions to materials "
+        "and assessments.",
+    ),
+    (
+        "Create a new<br/>computing course",
+        "Develop a course plan with lessons, labs, projects, assessments, and instructor "
+        "guidance. Receive editable materials that your faculty can use and adapt.",
+    ),
 ]
 bottoms = []
 for i, (title, body) in enumerate(services):
@@ -93,34 +99,41 @@ for i, (title, body) in enumerate(services):
     c.setLineWidth(1.7)
     c.line(x, top, x + 252, top)
     bottom = paragraph(title, x, top - 11, 252, "heading")
-    bottoms.append(paragraph(body, x, bottom - 9, 252))
+    bottoms.append(paragraph(body, x, bottom - 8, 252))
 
-y = min(bottoms) - 21
-paragraph("SOFTWARE EXPERIENCE + TEACHING EXPERIENCE", 42, y, 528, "label")
-top = y - 20
-bottoms = []
-for i, name in enumerate(("Alex Shaw", "Baha Marupov")):
-    x = 42 + i * 276
-    bottom = paragraph(name, x, top, 252, "heading")
-    bottoms.append(paragraph("Software professional<br/>College educator", x, bottom - 5, 252))
-y = min(bottoms)
-
-box_top = y - 18
-box_bottom = box_top - 89
+box_top = min(bottoms) - 18
+box_bottom = box_top - 157
 c.setFillColor(SOFT)
-c.rect(42, box_bottom, 528, 89, fill=1, stroke=0)
-y = paragraph("WORKING WITH YOUR FACULTY", 57, box_top - 14, 498, "label")
+c.rect(42, box_bottom, 528, 157, fill=1, stroke=0)
+y = paragraph("ANNUAL CURRICULUM PARTNERSHIP", 57, box_top - 14, 498, "label")
+y = paragraph("Keep courses and programs current", 57, y - 7, 498, "heading")
 y = paragraph(
-    "We agree on the course goals, materials, schedule, and fee. We develop the "
-    "materials with faculty feedback and explain how to use and update them. "
-    "Your faculty make the academic decisions and approve the finished work.", 57, y - 9, 498,
+    "An annual review, agreed updates, and faculty consultation during the year help "
+    "your courses and programs reflect changes in technology and workforce needs.",
+    57, y - 8, 498,
 )
-assert y >= box_bottom + 12, "Working-together text overflows its panel"
-assert box_bottom >= 111, "Content overlaps the contact footer"
+y = paragraph("Review together / agree priorities / update materials / review the changes with faculty", 57, y - 12, 498)
+y = paragraph(
+    "Receive updated materials, a record of changes, remaining priorities, and a plan "
+    "for the next year.", 57, y - 8, 498,
+)
+assert y >= box_bottom + 12, "Annual partnership text overflows its panel"
+
+y = paragraph("AGREE ON THE WORK BEFORE WE BEGIN", 42, box_bottom - 15, 528, "label")
+y = paragraph(
+    "We agree on the covered courses or program, revisions, consultation, schedule, "
+    "and fee. Additional work is scoped separately. Faculty make the academic "
+    "decisions and approve the finished work.", 42, y - 7, 528,
+)
+assert y >= 104, "Scope agreement overlaps the contact footer"
 rule(89)
-paragraph("CONTACT ALEX ABOUT YOUR COURSE", 42, 76, 310, "label")
+paragraph("CONTACT ALEX ABOUT YOUR COURSES OR PROGRAM", 42, 76, 310, "label")
 paragraph('<link href="mailto:alexandergshaw@gmail.com" color="#2d6452">alexandergshaw@gmail.com</link>', 42, 59, 310)
-paragraph("Tell us what you teach, what needs to change,<br/>or what new course you want to offer.", 360, 75, 210, "small")
+paragraph(
+    '<link href="mailto:alexandergshaw@gmail.com?subject=Annual%20Curriculum%20Partnership" '
+    'color="#2d6452">Ask about the Annual<br/>Curriculum Partnership</link>',
+    390, 73, 180, "small",
+)
 c.showPage()
 c.save()
 print(OUTPUT)
