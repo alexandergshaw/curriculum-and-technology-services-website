@@ -9,25 +9,25 @@ from reportlab.platypus import Paragraph
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "output" / "pdf" / "access-capabilities.pdf"
 OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-INK = colors.HexColor("#142e2b")
-TEAL = colors.HexColor("#2d6452")
-MUTED = colors.HexColor("#56635e")
-SOFT = colors.HexColor("#e8ecdf")
-LINE = colors.HexColor("#d3d9cd")
-PAPER = colors.HexColor("#f5f3eb")
+INK = colors.HexColor("#292724")
+BRAND = colors.HexColor("#766045")
+MUTED = colors.HexColor("#625e58")
+SOFT = colors.HexColor("#ece9e3")
+LINE = colors.HexColor("#d5d0c8")
+WHITE = colors.HexColor("#ffffff")
 styles = {
     "body": ParagraphStyle("body", fontName="Helvetica", fontSize=10, leading=14, textColor=MUTED),
     "small": ParagraphStyle("small", fontName="Helvetica", fontSize=8, leading=11, textColor=MUTED),
-    "label": ParagraphStyle("label", fontName="Helvetica-Bold", fontSize=8, leading=11, textColor=TEAL),
+    "label": ParagraphStyle("label", fontName="Helvetica-Bold", fontSize=8, leading=11, textColor=BRAND),
     "heading": ParagraphStyle("heading", fontName="Helvetica-Bold", fontSize=13, leading=17, textColor=INK),
 }
 c = canvas.Canvas(str(OUTPUT), pagesize=(612, 792), pageCompression=1)
 c.setTitle("Access Curriculum & Technology | Curriculum Services")
 c.setAuthor("Alex Shaw and Baha Marupov | Access Curriculum & Technology")
 c.setSubject("Course and program reviews, new computing courses, the Annual Curriculum Partnership, and an illustrative AI course sample")
-c.setFillColor(PAPER)
+c.setFillColor(WHITE)
 c.rect(0, 0, 612, 792, fill=1, stroke=0)
-c.setFillColor(TEAL)
+c.setFillColor(BRAND)
 c.rect(0, 784, 612, 8, fill=1, stroke=0)
 
 
@@ -55,10 +55,8 @@ c.drawRightString(570, 750, "ALEX SHAW + BAHA MARUPOV")
 c.drawRightString(570, 735, "Omaha, Nebraska | Serving the Midwest")
 rule(707)
 c.setFillColor(INK)
-c.setFont("Helvetica", 29)
+c.setFont("Helvetica-Bold", 29)
 c.drawString(42, 670, "Modernize or create")
-c.setFillColor(TEAL)
-c.setFont("Times-Italic", 32)
 c.drawString(42, 634, "computing courses.")
 y = paragraph(
     "Alex Shaw and Baha Marupov are software professionals and college educators. "
@@ -95,7 +93,7 @@ services = [
 bottoms = []
 for i, (title, body) in enumerate(services):
     x = 42 + i * 276
-    c.setStrokeColor(TEAL)
+    c.setStrokeColor(BRAND)
     c.setLineWidth(1.7)
     c.line(x, top, x + 252, top)
     bottom = paragraph(title, x, top - 11, 252, "heading")
@@ -128,15 +126,15 @@ y = paragraph(
 assert y >= 104, "Scope agreement overlaps the contact footer"
 rule(89)
 paragraph("CONTACT ALEX ABOUT YOUR COURSES OR PROGRAM", 42, 76, 310, "label")
-paragraph('<link href="mailto:alexandergshaw@gmail.com" color="#2d6452">alexandergshaw@gmail.com</link>', 42, 59, 310)
+paragraph('<link href="mailto:alexandergshaw@gmail.com" color="#766045">alexandergshaw@gmail.com</link>', 42, 59, 310)
 paragraph(
     '<link href="mailto:alexandergshaw@gmail.com?subject=Annual%20Curriculum%20Partnership" '
-    'color="#2d6452">Ask about the Annual<br/>Curriculum Partnership</link>',
+    'color="#766045">Ask about the Annual<br/>Curriculum Partnership</link>',
     390, 77, 180, "small",
 )
 paragraph(
     '<link href="https://alexandergshaw.github.io/curriculum-and-technology-services-website/ai-course-example.html" '
-    'color="#2d6452">AI course outline + offline sample</link>',
+    'color="#766045">AI course outline + offline sample</link>',
     390, 49, 180, "small",
 )
 c.showPage()
