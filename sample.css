@@ -87,3 +87,68 @@
   .handoff-list li { break-inside: avoid; }
   .sample-next { background: white; padding-block: 1rem; margin-top: 1rem; }
 }
+
+/* The diagram is also useful without JavaScript; controls are an enhancement. */
+.curriculum-explorer { min-width: 0; position: relative; padding: 1.5rem 1.6rem 0; background: linear-gradient(145deg, #28483eab, #122d2bd9); border: 1px solid #71886870; box-shadow: 0 25px 65px #041a1c3d; border-radius: 4px; }
+.curriculum-explorer::before, .curriculum-explorer::after { content: "+"; position: absolute; color: #b2c5a2; font: .9rem var(--mono); line-height: 1; }
+.curriculum-explorer::before { top: -7px; left: -5px; }
+.curriculum-explorer::after { bottom: -7px; right: -5px; }
+.explorer-topline { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.panel-label { display: inline-flex; align-items: center; gap: .5rem; font: .62rem/1.4 var(--mono); text-transform: uppercase; letter-spacing: .06em; color: #ccd8c0; }
+.status-dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px #d7ef8350; }
+.panel-edition { color: var(--on-dark); font: .6rem var(--mono); }
+.explorer-title { display: flex; align-items: center; justify-content: space-between; margin-top: 1.7rem; }
+.explorer-title h2 { font-size: clamp(2.25rem, 3.15vw, 3rem); line-height: 1.03; }
+.explorer-title h2 em { color: #d0dfb3; }
+.explorer-mark { color: var(--accent); font-size: 3.5rem; line-height: 1; font-weight: 200; }
+.explorer-instruction { margin-top: .8rem; font-size: .75rem; color: var(--on-dark); }
+.outcome-controls { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--dark-line); padding: 3px; margin: 1.2rem 0 0; min-width: 0; gap: 3px; }
+.outcome-controls label { position: relative; cursor: pointer; min-width: 0; }
+.outcome-controls input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.outcome-controls label > span { display: flex; align-items: center; justify-content: center; gap: .5rem; min-height: 40px; color: #cedcc5; font-size: .74rem; transition: background .2s, color .2s; }
+.tab-number { font: .62rem var(--mono); opacity: .75; }
+.outcome-controls input:checked + span { background: var(--accent); color: var(--night); }
+.outcome-controls input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 3px; }
+.outcome-controls label:hover > span { box-shadow: inset 0 0 0 1px #d7ef8360; }
+.alignment-visual { position: relative; margin-top: 1.4rem; height: 217px; }
+.connection-lines { position: absolute; inset: 0; width: 100%; height: 100%; fill: var(--accent); overflow: visible; }
+.connection-lines path { fill: none; stroke: #91b677; stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.connection-lines path[data-muted="true"] { stroke: #64796d; stroke-dasharray: 3 5; }
+.outcome-node { position: relative; z-index: 1; margin: auto; width: 232px; max-width: 95%; display: flex; align-items: center; gap: .7rem; padding: .7rem .85rem; background: #2e4e40; border: 1px solid #87a36c; box-shadow: 0 0 28px #d7ef8308; }
+.outcome-code { color: var(--accent); font: .85rem var(--mono); padding-right: .7rem; border-right: 1px solid #69815d; }
+.node-kicker { display: block; color: #c2d3ba; font: .58rem/1.5 var(--mono); text-transform: uppercase; letter-spacing: .07em; }
+.outcome-node strong { display: block; font-size: .85rem; font-weight: 500; }
+.node-orbit { margin-left: auto; color: var(--accent); font-size: 1.7rem; line-height: 1; }
+.module-nodes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; list-style: none; padding: 0; margin: 0; position: absolute; width: 100%; bottom: 0; }
+.module-node { position: relative; padding: .75rem; margin: 0; background: #183630; border: 1px solid #566b55; transition: border-color .25s, background .25s; }
+.module-top { display: flex; justify-content: space-between; align-items: center; gap: .25rem; font: .55rem/1.5 var(--mono); letter-spacing: .03em; color: #c0cfbc; }
+.level-badge { display: inline-grid; place-items: center; width: 21px; height: 21px; border: 1px solid #677f59; font-size: .6rem; color: var(--accent); }
+.module-node strong { display: block; margin-top: .65rem; font-size: .8rem; line-height: 1.35; font-weight: 500; }
+.level-name { display: block; font: .6rem/1.5 var(--mono); color: #c1d4b5; margin-top: .6rem; }
+.module-node[data-level="D"] { border-color: #9ab66a; background: #334d35; }
+.module-node[data-level="D"] .level-badge { background: var(--accent); color: var(--night); border-color: var(--accent); }
+.module-node[data-level="none"] { border-style: dashed; background: #1c332f; }
+.module-node[data-level="none"] .level-name { color: var(--on-dark); }
+.evidence-readout { margin-top: 1.4rem; border-top: 1px solid var(--dark-line); padding-block: 1rem; min-height: 110px; }
+.readout-label { display: flex; justify-content: space-between; font: .6rem/1.5 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.evidence-readout p { font-size: .75rem; line-height: 1.6; color: #d1ddc8; margin-top: .5rem; max-width: 34rem; }
+.explorer-footer { margin-inline: -1.6rem; padding: .65rem 1.6rem; background: #0e252555; border-top: 1px solid var(--dark-line); display: flex; align-items: center; justify-content: space-between; gap: .7rem; font-size: .59rem; color: var(--on-dark); }
+.explorer-footer a { display: inline-flex; align-items: center; gap: .5rem; min-height: 32px; color: #e0eccc; }
+
+.sample-explorer { max-width: 640px; margin: 0 auto 2rem; }
+.sample-explorer .curriculum-explorer { color: var(--paper); background: var(--night); }
+.sample-explorer :focus-visible { outline-color: var(--accent); }
+@media (max-width: 480px) {
+  .curriculum-explorer { padding: 1.2rem 1rem 0; }
+  .explorer-title h2 { font-size: 2.2rem; }
+  .panel-label { font-size: .55rem; }
+  .module-nodes { gap: 5px; }
+  .module-node { padding: .55rem .4rem; }
+  .module-top { flex-wrap: wrap; font-size: .48rem; }
+  .module-node strong { font-size: .72rem; }
+  .level-name { font-size: .49rem; }
+  .explorer-footer { margin-inline: -1rem; padding-inline: 1rem; flex-wrap: wrap; }
+}
+@media print {
+  .sample-explorer { display: none; }
+}

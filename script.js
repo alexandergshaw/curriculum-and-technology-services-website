@@ -77,25 +77,7 @@ if (copyButton && copyStatus && emailLink && navigator.clipboard && window.isSec
   });
 }
 
-let printDisclosureStates;
-
-window.addEventListener("beforeprint", () => {
-  if (printDisclosureStates) return;
-  printDisclosureStates = Array.from(document.querySelectorAll("details"), (detail) => ({
-    detail,
-    open: detail.open,
-  }));
-  printDisclosureStates.forEach(({ detail }) => { detail.open = true; });
-});
-
-window.addEventListener("afterprint", () => {
-  if (!printDisclosureStates) return;
-  printDisclosureStates.forEach(({ detail, open }) => { detail.open = open; });
-  printDisclosureStates = undefined;
-});
-
 (() => {
-  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
 
   if (!("IntersectionObserver" in window)) {
@@ -123,7 +105,6 @@ window.addEventListener("afterprint", () => {
     if (section) linkForSection.set(section, link);
   });
   const header = document.querySelector(".site-header");
-  const progressBar = document.querySelector(".scroll-progress-bar");
   if (header && "ResizeObserver" in window) {
     new ResizeObserver(() => {
       document.documentElement.style.setProperty("--header-height", `${header.offsetHeight}px`);
@@ -133,11 +114,6 @@ window.addEventListener("afterprint", () => {
   const update = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     if (header) header.classList.toggle("is-scrolled", scrollTop > 8);
-    if (progressBar && !prefersReduced) {
-      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-      const ratio = scrollable > 0 ? Math.min(1, scrollTop / scrollable) : 0;
-      progressBar.style.transform = `scaleX(${ratio})`;
-    }
     let activeLink;
     linkForSection.forEach((link, section) => {
       if (section.getBoundingClientRect().top <= window.innerHeight * .4) activeLink = link;

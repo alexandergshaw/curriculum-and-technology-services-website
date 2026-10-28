@@ -1,34 +1,33 @@
 # Access Curriculum & Technology
 
-A complete, dependency-free static website. No build step, external fonts, analytics, or services are required.
+A dependency-free static website for Alex Shaw's computing course-development services. No build step, external fonts, analytics, or services are required.
+
+## Core message and structure
+
+Alex is a software professional and a teaching professional who helps colleges **modernize existing computing courses or create new ones**. The first screen states that offer and shows both professional backgrounds. Keep future changes focused on this message.
+
+The homepage has four destinations: **Services**, **Experience**, **Course example**, and **Contact Alex**. Services presents the two offers and a short explanation of faculty collaboration. Experience supports the offer with Alex's individual work history. The course example demonstrates the teaching materials; the interactive curriculum map lives on that separate page. Contact repeats the two services and provides email and a one-page overview.
 
 ## Preview and hosting
 
-Open `index.html` directly in a browser. For a local HTTP preview, run `python tools/preview.py` and visit `http://127.0.0.1:8765`. The preview binds only to loopback and serves an explicit list of public site assets; it does not expose directory listings, Git data, or tooling. Stop it with Ctrl+C when finished.
+Run `python tools/preview.py` and visit `http://127.0.0.1:8765`. The preview binds only to loopback and serves an explicit list of public site assets; it does not expose directory listings, Git data, or tooling. Stop it with Ctrl+C when finished. The static pages also support opening directly in a browser outside the automated preview workflow.
 
-Upload `index.html`, `curriculum-sample.html`, `styles.css`, `sample.css`, `script.js`, `favicon.svg`, `downloads/`, and `output/pdf/` together to any ordinary static host. Keep their relative paths intact; the site works at a domain root or a repository subdirectory. No deployment or account connection is configured here. `tools/` and `output/previews/` are local development resources and are not needed on the host.
+Upload `index.html`, `curriculum-sample.html`, `styles.css`, `sample.css`, `script.js`, `favicon.svg`, `downloads/`, and `output/pdf/` together to any ordinary static host. Keep relative paths intact. No deployment or account connection is configured here. `tools/` and `output/previews/` are local development resources and are not needed on the host.
 
 ## Editing
 
-- **`index.html`**: main-page copy, navigation, service descriptions, professional experience, and the example course-review engagement.
-- **`curriculum-sample.html` / `sample.css`**: the full illustrative curriculum map, rubric, and faculty handoff notes. This page works without JavaScript and has print styles. Keep outcome codes and module descriptions consistent with `downloads/illustrative-curriculum-map.csv`.
-- **Email and brand**: update both HTML files and `tools/build_capabilities.py`, then regenerate the PDF. The current public address is `alexandergshaw@gmail.com`; replace it only with a working address. The copy button reads the visible email and has no separate address setting.
-- **`styles.css`**: the forest-green, warm-paper, and lime visual system; system typography with serif accents; the interactive diagram, alignment matrix, responsive layouts, and print rules. No external images, fonts, or animation dependencies are required.
-- **Curriculum explorer**: `script.js` maps the three radio choices to P1/P2/P3 and their introduction, reinforcement, and demonstration levels. Keep these mappings aligned with the full sample and CSV. Controls appear only after the listener is ready; without JavaScript, the P1 diagram and the full sample link remain available. Native radios support keyboard arrow navigation, and evidence updates use a polite live region. Motion respects the reduced-motion setting.
-- **`script.js`**: optional clipboard enhancement, print disclosure-state preservation, and progressive scroll enhancements (entrance motion, active-section navigation, a sticky-header shadow, and a scroll-progress indicator). Content is visible by default, including when the script is blocked or fails. Entrance motion only starts after an element is observed; it never hides content and is disabled under `prefers-reduced-motion` and in print. Modern browsers also expand disclosure content through print CSS. The header remains in normal document flow on small screens.
-- **`favicon.svg`**: local brand icon. The footer copyright year is maintained in HTML.
-- **`output/pdf/access-capabilities.pdf`**: a one-page overview for internal sharing. Rebuild with `python tools/build_capabilities.py` in an environment with ReportLab installed. Keep its service descriptions, experience, and contact details in sync with the main page; render and inspect the regenerated PDF before release. Equivalent information is available in the main page's HTML.
+- **`index.html`**: core message, two services, professional experience, course-example introduction, and contact.
+- **`styles.css`**: shared forest-green, warm-paper, and lime visual system; homepage layouts; responsive behavior; accessible focus and print styles.
+- **`curriculum-sample.html` / `sample.css`**: illustrative curriculum map, interactive outcome explorer, rubric, and faculty handoff notes. The full table remains available without JavaScript and in print. Keep the sample consistent with `downloads/illustrative-curriculum-map.csv`.
+- **`script.js`**: optional clipboard support, keyboard-accessible outcome selection, gentle entrance motion, active-section navigation, and sticky-header sizing. Content is visible by default. Reduced-motion preferences disable animation. The header is static on small phones.
+- **Curriculum explorer**: three radio choices correspond to P1/P2/P3 and their introduction, reinforcement, and demonstration levels. P3 is not directly assessed in Module 1, introduced in Module 2, and demonstrated in Module 3. Controls appear only after the listener is ready; evidence updates use a polite live region.
+- **Email and brand**: update both HTML files and `tools/build_capabilities.py`, then regenerate the PDF. The public address is `alexandergshaw@gmail.com`; replace it only with a working address. The copy button reads the visible address.
+- **`output/pdf/access-capabilities.pdf`**: one-page service overview with the same two offers, experience, faculty collaboration, and contact. Rebuild with `python tools/build_capabilities.py` using ReportLab, then render and inspect the PDF. Equivalent information appears in HTML.
 
-To add evidence, obtain permission for the specific artifact, attribution, and public use first. Remove student identities and confidential information. Distinguish Alex's individual experience from business engagements; retain “Course proposal” for unimplemented designs. The expanded activities and full curriculum sample are newly authored illustrations, not institutional assignments, student submissions, or evidence of measured results. The sample's rubric weights and performance levels are illustrative; local faculty set grading thresholds. Add only real, permission-cleared artifacts or testimonials, and verify any new links.
+Affiliations describe Alex's individual experience, not business clients or institutional endorsements. Keep proposed work labeled as proposed. The public course example is an illustration, not an institutional assignment or evidence of student results. Add only real, permission-cleared artifacts or testimonials. Faculty set grading thresholds and approve course decisions. Schedules, fees, and deliverables are agreed during scoping; do not invent commitments.
 
-## Review before release
-
-- Confirm the final public/legal brand; the current public name omits a legal suffix.
-- Retain or replace the public email address and check all contact links.
-- Review factual copy, professional affiliations, and publication permissions.
-- The course-review engagement is an example; its schedule, fee, and review windows are established in a written proposal. Do not add assumed timelines, client results, or testimonials.
-- Supply the real domain before adding canonical links, `og:url`, social-image URLs, or domain-dependent structured data.
+Supply the actual public domain before adding canonical links, `og:url`, social-image URLs, or domain-dependent structured data.
 
 ## Manual checks
 
-There is no test framework or website build pipeline. Check both pages at 320px, 375px, 768px, and 1440px: select each explorer outcome → open the full sample → editable map download → example engagement → capabilities PDF → correct email. P3 should show no direct assessment in Module 1, introduction in Module 2, and demonstration in Module 3. Verify keyboard radio navigation, the visible skip link and focusable main target, case-study disclosures and proposal labels, the sample table's horizontal scrolling, narrow-screen/zoom reflow, no-JavaScript navigation, blocked-script visibility, and browser console/network errors. Preview printing with samples expanded and navigation controls hidden; verify disclosure states are restored afterward. Check clipboard messages without sending email.
+There is no build pipeline or test framework. Inspect both pages at 320px, 375px, 768px, and 1440px. Confirm the offer and both professional backgrounds are clear before following the navigation: services → experience → course example → contact. Check the sample's radio controls with pointer and keyboard, the horizontally scrollable table, CSV and PDF downloads, email destinations, clipboard feedback, skip link, anchor offsets, and browser errors. Verify reduced-motion and no-JavaScript readability. Print the sample with its complete table and rubric; the interactive map is omitted from print because the table provides the full information.

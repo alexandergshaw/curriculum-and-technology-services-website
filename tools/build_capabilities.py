@@ -1,4 +1,4 @@
-"""Rebuild the public, one-page capabilities brief with ReportLab."""
+"""Rebuild the public one-page course-development overview with ReportLab."""
 
 from pathlib import Path
 from reportlab.lib import colors
@@ -9,26 +9,22 @@ from reportlab.platypus import Paragraph
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "output" / "pdf" / "access-capabilities.pdf"
 OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-
-INK = colors.HexColor("#142d3c")
-TEAL = colors.HexColor("#245c59")
-MUTED = colors.HexColor("#52616a")
-SOFT = colors.HexColor("#edf1eb")
-LINE = colors.HexColor("#d7dcd6")
-PAPER = colors.HexColor("#fcfbf7")
-
+INK = colors.HexColor("#142e2b")
+TEAL = colors.HexColor("#2d6452")
+MUTED = colors.HexColor("#56635e")
+SOFT = colors.HexColor("#e8ecdf")
+LINE = colors.HexColor("#d3d9cd")
+PAPER = colors.HexColor("#f5f3eb")
 styles = {
     "body": ParagraphStyle("body", fontName="Helvetica", fontSize=10, leading=14, textColor=MUTED),
     "small": ParagraphStyle("small", fontName="Helvetica", fontSize=8, leading=11, textColor=MUTED),
     "label": ParagraphStyle("label", fontName="Helvetica-Bold", fontSize=8, leading=11, textColor=TEAL),
-    "heading": ParagraphStyle("heading", fontName="Times-Roman", fontSize=17, leading=20, textColor=INK),
-    "service": ParagraphStyle("service", fontName="Helvetica-Bold", fontSize=11, leading=14, textColor=INK),
+    "heading": ParagraphStyle("heading", fontName="Helvetica-Bold", fontSize=13, leading=17, textColor=INK),
 }
-
 c = canvas.Canvas(str(OUTPUT), pagesize=(612, 792), pageCompression=1)
-c.setTitle("Access Curriculum & Technology | Capabilities")
-c.setAuthor("Access Curriculum & Technology")
-c.setSubject("Services, professional experience, and an example focused course review")
+c.setTitle("Alex Shaw | Computing Course Development")
+c.setAuthor("Alex Shaw | Access Curriculum & Technology")
+c.setSubject("Software and teaching expertise to modernize or create computing courses")
 c.setFillColor(PAPER)
 c.rect(0, 0, 612, 792, fill=1, stroke=0)
 c.setFillColor(TEAL)
@@ -50,77 +46,74 @@ def rule(y):
 
 
 c.setFillColor(INK)
-c.setFont("Times-Roman", 30)
-c.drawString(42, 740, "Access.")
-paragraph("CURRICULUM &amp; TECHNOLOGY", 43, 727, 300, "label")
+c.setFont("Helvetica-Bold", 27)
+c.drawString(42, 741, "Access.")
+paragraph("CURRICULUM &amp; TECHNOLOGY", 43, 729, 300, "label")
 c.setFillColor(MUTED)
 c.setFont("Helvetica", 8)
-c.drawRightString(570, 750, "CAPABILITIES / OCTOBER 2026")
+c.drawRightString(570, 750, "ALEX SHAW / COURSE DEVELOPMENT")
 c.drawRightString(570, 735, "Omaha, Nebraska | Serving the Midwest")
-rule(706)
-
+rule(707)
 c.setFillColor(INK)
-c.setFont("Times-Roman", 28)
-c.drawString(42, 671, "Practical computing curriculum.")
+c.setFont("Helvetica", 29)
+c.drawString(42, 670, "Modernize or create")
 c.setFillColor(TEAL)
-c.setFont("Times-Italic", 28)
-c.drawString(42, 639, "Built with your faculty.")
+c.setFont("Times-Italic", 32)
+c.drawString(42, 634, "computing courses.")
 y = paragraph(
-    "We help Midwest colleges align computing courses with program goals, develop applied "
-    "assessments, and equip faculty with editable teaching materials and a practical implementation plan.",
-    42, 619, 528,
+    "I'm a software professional and a teaching professional. I bring both kinds of "
+    "experience to developing courses for your college - with practical projects, "
+    "clear assessments, and materials ready to teach.", 42, 614, 528,
 )
 
 top = y - 23
-paragraph("THREE WAYS TO BEGIN", 42, top, 528, "label")
+paragraph("TWO WAYS I CAN HELP", 42, top, 528, "label")
 top -= 22
 services = [
-    ("Update a course", "Outcomes and module plans. Applied labs, projects, and rubrics. Editable instructor materials and implementation guidance."),
-    ("Build a new offering", "Competency frameworks and prerequisites. Course sequences and assessment plans. Course development and phased implementation."),
-    ("Plan improvements", "Curriculum and assessment maps. Prioritized findings. A modernization roadmap with implementation considerations."),
+    ("Modernize an existing course", "Review the syllabus and existing materials. Update technologies, examples, and applied projects. Refine assessments, rubrics, and instructor guidance."),
+    ("Create a new computing course", "Define outcomes, prerequisites, and a module plan. Build lessons, labs, projects, and assessments. Prepare editable teaching materials and a faculty handoff."),
 ]
 bottoms = []
 for i, (title, body) in enumerate(services):
-    x = 42 + i * 182
+    x = 42 + i * 276
     c.setStrokeColor(TEAL)
     c.setLineWidth(1.7)
-    c.line(x, top, x + 164, top)
-    bottom = paragraph(title, x, top - 10, 164, "service")
-    bottoms.append(paragraph(body, x, bottom - 8, 164))
+    c.line(x, top, x + 252, top)
+    bottom = paragraph(title, x, top - 11, 252, "heading")
+    bottoms.append(paragraph(body, x, bottom - 9, 252))
 
-y = min(bottoms) - 14
-y = paragraph("Faculty workshops, LMS packaging, technical setup, and ongoing updates can support these engagements.", 42, y, 528, "small")
-
-box_top = y - 18
-box_bottom = box_top - 194
-c.setFillColor(SOFT)
-c.rect(42, box_bottom, 528, 194, fill=1, stroke=0)
-y = paragraph("EXAMPLE ENGAGEMENT", 57, box_top - 13, 498, "label")
-y = paragraph("Focused course review", 57, y - 5, 498, "heading")
-for text in [
-    "<b>Review:</b> Syllabus, course and program outcomes, selected assignments and rubrics, and faculty priorities.",
-    "<b>Receive:</b> An editable outcomes-to-assessment map, prioritized findings, and a recommended sequence of updates.",
-    "<b>Collaborate:</b> Kickoff, feedback on draft findings, and handoff. Faculty retain academic decisions and approval.",
-    "<b>Plan:</b> A written proposal sets the schedule, fee, review windows, and deliverables after an initial scope discussion.",
-]:
-    y = paragraph(text, 57, y - 6, 498)
-assert y >= box_bottom + 8, "Engagement text overflows its panel"
-
-y = box_bottom - 18
-y = paragraph("LED BY ALEX SHAW", 42, y, 528, "label")
+y = min(bottoms) - 25
+paragraph("SOFTWARE EXPERIENCE + TEACHING EXPERIENCE", 42, y, 528, "label")
 y = paragraph(
-    "Software-engineering leadership, including lead engineering work at Mutual of Omaha, "
-    "alongside teaching and curriculum-development experience at Metropolitan Community College "
-    "and Midland University. Based in Omaha and available to colleges across the Midwest.",
-    42, y - 6, 528,
+    "<b>Software professional.</b> My background includes enterprise software-engineering "
+    "leadership and lead engineering work at Mutual of Omaha.", 42, y - 20, 528,
 )
-y = paragraph("Affiliations describe Alex's individual experience, not consulting client relationships or institutional endorsements.", 42, y - 6, 528, "small")
-assert y >= 91, "Biography overlaps the contact footer"
+y = paragraph(
+    "<b>Teaching professional.</b> My teaching and curriculum-development experience "
+    "includes Metropolitan Community College and Midland University, with work in web "
+    "development instruction and systems administration curriculum design.", 42, y - 10, 528,
+)
+y = paragraph(
+    "Affiliations describe my individual experience, not consulting client relationships or institutional endorsements.",
+    42, y - 9, 528, "small",
+)
 
-rule(82)
-paragraph("LET'S DISCUSS YOUR PROGRAM", 42, 70, 280, "label")
-paragraph('<link href="mailto:alexandergshaw@gmail.com" color="#245c59">alexandergshaw@gmail.com</link>', 42, 55, 290)
-paragraph("Share the course or program, the challenge,<br/>and any timing constraints.", 360, 67, 210, "small")
+box_top = y - 19
+box_bottom = box_top - 105
+c.setFillColor(SOFT)
+c.rect(42, box_bottom, 528, 105, fill=1, stroke=0)
+y = paragraph("WORKING WITH YOUR FACULTY", 57, box_top - 14, 498, "label")
+y = paragraph(
+    "We agree on the learners, course goals, deliverables, timeline, and fee. I develop "
+    "the materials with faculty feedback and provide a clear handoff. Faculty retain "
+    "academic decisions and approval.", 57, y - 9, 498,
+)
+assert y >= box_bottom + 12, "Working-together text overflows its panel"
+assert box_bottom >= 111, "Content overlaps the contact footer"
+rule(89)
+paragraph("LET'S TALK ABOUT YOUR COURSE", 42, 76, 310, "label")
+paragraph('<link href="mailto:alexandergshaw@gmail.com" color="#2d6452">alexandergshaw@gmail.com</link>', 42, 59, 310)
+paragraph("Tell me what you teach, what needs to change,<br/>or what new course you want to offer.", 360, 75, 210, "small")
 c.showPage()
 c.save()
 print(OUTPUT)
