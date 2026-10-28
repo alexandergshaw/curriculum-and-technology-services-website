@@ -1,5 +1,65 @@
 "use strict";
 
+// This small explorer uses the same illustrative map as the full sample.
+(() => {
+  const explorer = document.querySelector(".curriculum-explorer");
+  if (!explorer) return;
+  const controls = explorer.querySelector(".outcome-controls");
+  const code = explorer.querySelector("#outcome-code");
+  const title = explorer.querySelector("#outcome-title");
+  const evidence = explorer.querySelector("#outcome-evidence");
+  const edition = explorer.querySelector(".panel-edition");
+  const modules = Array.from(explorer.querySelectorAll("[data-module]"));
+  const connections = Array.from(explorer.querySelectorAll("[data-connection]"));
+  if (!controls || !code || !title || !evidence || !edition || modules.length !== 3) return;
+
+  const outcomes = {
+    implementation: {
+      code: "P1", title: "Build & test", edition: "01 / 03", levels: ["I", "R", "D"],
+      evidence: "Working code and repeatable tests demonstrate that the application handles normal, empty, loading, and error states.",
+    },
+    judgment: {
+      code: "P2", title: "Reason & decide", edition: "02 / 03", levels: ["I", "R", "D"],
+      evidence: "A design rationale explains the request flow, weighs technical choices, and documents responsible use of synthetic data.",
+    },
+    communication: {
+      code: "P3", title: "Explain & reproduce", edition: "03 / 03", levels: ["none", "I", "D"],
+      evidence: "Setup instructions, an annotated demonstration, and verification notes let another person reproduce the work. Module 1 does not directly assess this outcome.",
+    },
+  };
+  const levelNames = { I: "Introduced", R: "Reinforced", D: "Demonstrated", none: "Not assessed" };
+  const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let animation;
+
+  controls.addEventListener("change", (event) => {
+    const input = event.target;
+    if (!(input instanceof HTMLInputElement) || !input.checked) return;
+    const outcome = outcomes[input.value];
+    if (!outcome) return;
+    explorer.dataset.outcome = input.value;
+    code.textContent = outcome.code;
+    title.textContent = outcome.title;
+    edition.textContent = outcome.edition;
+    modules.forEach((module, index) => {
+      const level = outcome.levels[index];
+      module.dataset.level = level;
+      const badge = module.querySelector(".level-badge");
+      badge.textContent = level === "none" ? "—" : level;
+      badge.setAttribute("aria-label", levelNames[level]);
+      module.querySelector(".level-name").textContent = levelNames[level];
+      if (connections[index]) connections[index].dataset.muted = String(level === "none");
+    });
+    evidence.textContent = outcome.evidence;
+    const node = explorer.querySelector(".outcome-node");
+    if (!motionPreference.matches && node.animate) {
+      if (animation) animation.cancel();
+      animation = node.animate([{ transform: "translateY(-4px)" }, { transform: "none" }], { duration: 300, easing: "ease-out" });
+    }
+  });
+  // Never show controls before their interaction is ready.
+  controls.hidden = false;
+})();
+
 const copyButton = document.querySelector(".copy-email");
 const copyStatus = document.querySelector(".copy-status");
 const emailLink = document.querySelector(".email-address");
@@ -43,7 +103,7 @@ window.addEventListener("afterprint", () => {
   } else {
     document.querySelectorAll("[data-reveal-stagger]").forEach((group) => {
       Array.from(group.querySelectorAll("[data-reveal]")).forEach((el, index) => {
-        el.style.transitionDelay = `${index * 90}ms`;
+        el.style.animationDelay = `${index * 70}ms`;
       });
     });
     const revealObserver = new IntersectionObserver((entries) => {
@@ -62,20 +122,13 @@ window.addEventListener("afterprint", () => {
     const section = document.getElementById(link.getAttribute("href").slice(1));
     if (section) linkForSection.set(section, link);
   });
-  if ("IntersectionObserver" in window && linkForSection.size) {
-    const navObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const link = linkForSection.get(entry.target);
-        if (!link || !entry.isIntersecting) return;
-        navLinks.forEach((other) => other.classList.remove("is-active"));
-        link.classList.add("is-active");
-      });
-    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
-    linkForSection.forEach((link, section) => navObserver.observe(section));
-  }
-
   const header = document.querySelector(".site-header");
   const progressBar = document.querySelector(".scroll-progress-bar");
+  if (header && "ResizeObserver" in window) {
+    new ResizeObserver(() => {
+      document.documentElement.style.setProperty("--header-height", `${header.offsetHeight}px`);
+    }).observe(header);
+  }
   let ticking = false;
   const update = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -85,6 +138,15 @@ window.addEventListener("afterprint", () => {
       const ratio = scrollable > 0 ? Math.min(1, scrollTop / scrollable) : 0;
       progressBar.style.transform = `scaleX(${ratio})`;
     }
+    let activeLink;
+    linkForSection.forEach((link, section) => {
+      if (section.getBoundingClientRect().top <= window.innerHeight * .4) activeLink = link;
+    });
+    navLinks.forEach((link) => {
+      link.classList.toggle("is-active", link === activeLink);
+      if (link === activeLink) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    });
     ticking = false;
   };
   const onScroll = () => {

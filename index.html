@@ -4,13 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Access Curriculum &amp; Technology | Practical computing curriculum</title>
-  <meta name="description" content="Faculty-centered computing curriculum support for Midwest colleges: course refreshes, new offerings, program review, and implementation. Led by Alex Shaw in Omaha, Nebraska, serving Nebraska, Iowa, and neighboring states.">
+  <meta name="description" content="Faculty-centered computing curriculum for Midwest colleges. Course development, program review, and practical implementation with Alex Shaw in Omaha, Nebraska.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Access Curriculum &amp; Technology">
-  <meta property="og:description" content="Practical computing curriculum for Midwest colleges. Built with your faculty. Explore course development, program review, and teaching examples with Alex Shaw of Omaha, Nebraska.">
-  <meta name="theme-color" content="#142d3c">
+  <meta property="og:description" content="Practical computing education. Built with your faculty. Explore our approach and an interactive curriculum example.">
+  <meta name="theme-color" content="#102b29">
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="./styles.css">
   <script src="./script.js" defer></script>
 </head>
@@ -19,234 +18,90 @@
   <div class="scroll-progress" aria-hidden="true"><span class="scroll-progress-bar"></span></div>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="wordmark" href="#top" aria-label="Access Curriculum & Technology home">
-        <span class="wordmark-name">Access<span class="wordmark-dot" aria-hidden="true">.</span></span>
-        <span class="wordmark-description">Curriculum &amp; Technology</span>
-      </a>
-      <nav aria-label="Main navigation">
-        <a href="#services">Services</a>
-        <a href="#selected-work">Selected Work</a>
-        <a href="#approach">Approach</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <a class="wordmark" href="#top" aria-label="Access Curriculum &amp; Technology home"><span class="brand-symbol" aria-hidden="true">✳</span><span><span class="wordmark-name">Access<span class="wordmark-dot">.</span></span><span class="wordmark-description">Curriculum &amp; Technology</span></span></a>
+      <nav aria-label="Main navigation"><a href="#services">Expertise</a><a href="#selected-work">Work</a><a href="#approach">Approach</a><a href="#about">About</a><a class="nav-contact" href="#contact">Let's talk <span aria-hidden="true">↗</span></a></nav>
     </div>
   </header>
-
-  <main id="main">
-    <section class="hero section" id="top" aria-labelledby="hero-heading">
-      <div class="container hero-grid">
+  <main id="main" tabindex="-1">
+    <section class="hero" id="top" aria-labelledby="hero-heading">
+      <div class="hero-grid container">
         <div class="hero-copy">
-          <p class="eyebrow">Curriculum &amp; technology support for Midwest higher education</p>
-          <h1 id="hero-heading">Practical computing curriculum.<br><em>Built with your faculty.</em></h1>
-          <p class="hero-intro">We help colleges across Nebraska, Iowa, and the broader Midwest update courses, develop new offerings, and plan program improvements—with applied projects, clear assessments, and materials faculty can continue to use.</p>
-          <div class="actions">
-            <a class="button" href="#contact">Start a conversation <span aria-hidden="true">↗</span></a>
-            <a class="text-link" href="#selected-work">Explore examples <span aria-hidden="true">↓</span></a>
-          </div>
-          <p class="credibility">Led by Alex Shaw · Software engineering and college teaching · Based in Omaha, Nebraska, serving the Midwest.</p>
+          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> Where education meets engineering</p>
+          <h1 id="hero-heading">Curriculum<br>with a clear<br><em>way forward.</em></h1>
+          <p class="hero-intro">Practical computing education. Built with your faculty.</p>
+          <p class="hero-description">We help Midwest colleges turn program goals into applied courses, meaningful assessments, and materials faculty can make their own.</p>
+          <div class="actions"><a class="button button-accent" href="#services">Explore our expertise <span aria-hidden="true">↗</span></a><a class="text-link" href="#approach">Start with one course <span aria-hidden="true">↓</span></a></div>
+          <p class="hero-location"><span aria-hidden="true">◎</span> Omaha, Nebraska <span class="location-divider" aria-hidden="true">/</span> Serving the Midwest</p>
         </div>
-        <aside class="learning-preview" aria-labelledby="preview-title">
-          <div class="preview-bar"><span class="status-dot" aria-hidden="true"></span> Sample learning design <span aria-hidden="true">01 / WEB</span></div>
-          <div class="preview-body">
-            <p class="eyebrow">From concept to working code</p>
-            <h2 id="preview-title">Make the connection.</h2>
-            <div class="learning-step">
-              <span class="step-marker" aria-hidden="true">01</span>
-              <div><h3>Objective</h3><p>Connect an interface to live application data.</p></div>
-            </div>
-            <div class="data-flow" aria-label="Express endpoint to React interface"><code>GET /api/events</code><span aria-hidden="true">→</span><code>React interface</code></div>
-            <div class="learning-step">
-              <span class="step-marker" aria-hidden="true">02</span>
-              <div><h3>Practical task</h3><p>Retrieve events. Show the list. Handle loading and errors.</p></div>
-            </div>
-            <div class="learning-step">
-              <span class="step-marker" aria-hidden="true">03</span>
-              <div><h3>Evidence of learning</h3><p>Running code, a short demonstration, and an explanation of the data flow.</p></div>
-            </div>
+        <div class="curriculum-explorer" data-outcome="implementation" aria-labelledby="explorer-heading">
+          <div class="explorer-topline"><span class="panel-label"><span class="status-dot" aria-hidden="true"></span> The learning architecture</span><span class="panel-edition">01 / 03</span></div>
+          <div class="explorer-title"><h2 id="explorer-heading">Make the<br><em>connection.</em></h2><span class="explorer-mark" aria-hidden="true">↗</span></div>
+          <p class="explorer-instruction">Trace a program outcome from practice to evidence.</p>
+          <fieldset class="outcome-controls" hidden>
+            <legend class="visually-hidden">Choose an illustrative program outcome</legend>
+            <label><input type="radio" name="outcome" value="implementation" checked><span><span class="tab-number">01</span> Build</span></label>
+            <label><input type="radio" name="outcome" value="judgment"><span><span class="tab-number">02</span> Reason</span></label>
+            <label><input type="radio" name="outcome" value="communication"><span><span class="tab-number">03</span> Explain</span></label>
+          </fieldset>
+          <div class="alignment-visual" aria-label="Selected outcome and module progression">
+            <svg class="connection-lines" viewBox="0 0 540 240" preserveAspectRatio="none" aria-hidden="true"><path class="connection-spine" d="M270 62V105"/><path class="connection-path" data-connection="0" d="M270 105H85V185"/><path class="connection-path" data-connection="1" d="M270 105V185"/><path class="connection-path" data-connection="2" d="M270 105H455V185"/><circle cx="270" cy="105" r="4"/></svg>
+            <div class="outcome-node"><span class="outcome-code" id="outcome-code">P1</span><span><span class="node-kicker">Program outcome</span><strong id="outcome-title">Build &amp; test</strong></span><span class="node-orbit" aria-hidden="true">◎</span></div>
+            <ol class="module-nodes">
+              <li class="module-node" data-module="0" data-level="I"><span class="module-top"><span>MODULE 01</span><span class="level-badge" aria-label="Introduced">I</span></span><strong>Trace the<br>request</strong><span class="level-name">Introduced</span></li>
+              <li class="module-node" data-module="1" data-level="R"><span class="module-top"><span>MODULE 02</span><span class="level-badge" aria-label="Reinforced">R</span></span><strong>Build the<br>interface</strong><span class="level-name">Reinforced</span></li>
+              <li class="module-node" data-module="2" data-level="D"><span class="module-top"><span>MODULE 03</span><span class="level-badge" aria-label="Demonstrated">D</span></span><strong>Verify &amp;<br>explain</strong><span class="level-name">Demonstrated</span></li>
+            </ol>
           </div>
-          <div class="preview-footer">A clear objective. A useful task. Visible evidence.</div>
-        </aside>
+          <div class="evidence-readout" aria-live="polite" aria-atomic="true"><span class="readout-label">Evidence to look for <span aria-hidden="true">↳</span></span><p id="outcome-evidence">Working code and repeatable tests demonstrate that the application handles normal, empty, loading, and error states.</p></div>
+          <div class="explorer-footer"><span>Illustrative curriculum design</span><a href="./curriculum-sample.html">Explore the full sample <span aria-hidden="true">↗</span></a></div>
+        </div>
       </div>
+      <div class="container hero-bottom"><span>Clear outcomes. Applied work. Visible evidence.</span><a href="#services" aria-label="Continue to expertise">Scroll to explore <span aria-hidden="true">↓</span></a></div>
     </section>
+    <div class="experience-band"><div class="container experience-strip"><p class="eyebrow">Alex Shaw's<br>professional experience</p><div><span class="experience-discipline">Software engineering</span><strong>Mutual of Omaha</strong></div><div><span class="experience-discipline">Higher education</span><strong>Metropolitan Community College</strong></div><div><span class="experience-discipline">Higher education</span><strong>Midland University</strong></div></div></div>
 
     <section class="section services" id="services" aria-labelledby="services-heading">
       <div class="container">
-        <div class="section-heading" data-reveal>
-          <p class="eyebrow">01 / Services</p>
-          <h2 id="services-heading">Start with the need.</h2>
-          <p>Computing curriculum support for regional, community, and private colleges across the Midwest—from a single course to a coordinated pathway.</p>
+        <div class="section-heading split-heading" data-reveal><div><p class="eyebrow">01 / Our expertise</p><h2 id="services-heading">Ambition meets<br><em>implementation.</em></h2></div><p>A stronger course. A coherent new offering. A practical plan for what comes next. Start where your program needs us most.</p></div>
+        <div class="service-list">
+          <article class="service" id="course-development" data-reveal><span class="service-number" aria-hidden="true">01</span><div class="service-title"><span class="service-category">Course development</span><h3>Make the learning<br>work in practice.</h3><a class="text-link" href="./curriculum-sample.html">See the curriculum sample <span aria-hidden="true">↗</span></a></div><div class="service-description"><p>Connect current tools and applied tasks to the outcomes faculty need to assess.</p><ul><li>Outcomes and module plans</li><li>Applied labs, projects, and rubrics</li><li>Editable materials and instructor guidance</li></ul></div><span class="service-glyph" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="10" y="10" width="18" height="18"/><rect x="36" y="10" width="18" height="18"/><rect x="10" y="36" width="18" height="18"/><path d="M36 45h18m-9-9v18"/></svg></span></article>
+          <article class="service" id="program-design" data-reveal><span class="service-number" aria-hidden="true">02</span><div class="service-title"><span class="service-category">New offerings</span><h3>Build a pathway<br>with purpose.</h3><a class="text-link" href="#contact">Discuss a new offering <span aria-hidden="true">↗</span></a></div><div class="service-description"><p>Give a course, sequence, or certificate a clear purpose and a workable path to delivery.</p><ul><li>Competency frameworks and prerequisites</li><li>Course sequences and assessment plans</li><li>Course builds and phased implementation</li></ul></div><span class="service-glyph" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M12 50V34h18V18h22M42 8l10 10-10 10"/><circle cx="12" cy="50" r="4"/></svg></span></article>
+          <article class="service" id="program-review" data-reveal><span class="service-number" aria-hidden="true">03</span><div class="service-title"><span class="service-category">Program review</span><h3>See the gaps.<br>Choose the next move.</h3><a class="text-link" href="#approach">Explore a focused review <span aria-hidden="true">↗</span></a></div><div class="service-description"><p>Give faculty and academic leaders a shared view of priorities and next steps.</p><ul><li>Curriculum and assessment maps</li><li>Findings informed by relevant workforce research</li><li>A roadmap for modernization</li></ul></div><span class="service-glyph" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="29" cy="28" r="18"/><path d="m42 42 13 13M19 29l7 7 14-16"/></svg></span></article>
         </div>
-        <div class="entry-points" data-reveal-stagger>
-          <a href="#course-development" data-reveal><span class="entry-number">01</span><h3>Update a course <span aria-hidden="true">↗</span></h3><p>Refresh tools, assignments, assessments, and instructor materials.</p></a>
-          <a href="#program-design" data-reveal><span class="entry-number">02</span><h3>Build a new offering <span aria-hidden="true">↗</span></h3><p>Develop a course, coordinated sequence, or certificate pathway.</p></a>
-          <a href="#program-review" data-reveal><span class="entry-number">03</span><h3>Plan program improvements <span aria-hidden="true">↗</span></h3><p>Identify gaps, priorities, and a modernization roadmap.</p></a>
-        </div>
-        <p class="service-context" data-reveal>Across computer science, software development, cybersecurity, applied AI, cloud, data, web development, and IT. Deliverables are agreed for each engagement.</p>
-        <div class="service-grid" data-reveal-stagger>
-          <article class="service" id="program-review" data-reveal>
-            <h3>Curriculum &amp; program review</h3>
-            <p>Check skills coverage, tools, and sequencing before choosing changes.</p>
-            <ul><li>Competency map</li><li>Prioritized findings</li><li>Modernization roadmap; scoped peer-program and workforce research</li></ul>
-          </article>
-          <article class="service" id="course-development" data-reveal>
-            <h3>Course modernization &amp; development</h3>
-            <p>Refresh selected materials or build a complete course.</p>
-            <ul><li>Outcomes and module plan</li><li>Applied labs, projects, assessments, and rubrics</li><li>Instructor guidance and agreed LMS-ready materials</li></ul>
-          </article>
-          <article class="service" id="program-design" data-reveal>
-            <h3>Sequences, certificates &amp; program design</h3>
-            <p>Coordinate three-course sequences, certificates, concentrations, or broader modernization.</p>
-            <ul><li>Competency framework and prerequisites</li><li>Course sequence</li><li>Defined builds/redesigns and implementation plan</li></ul>
-            <p class="service-note">A review does not automatically include rebuilding every course.</p>
-          </article>
-          <article class="service" data-reveal>
-            <h3>AI, cybersecurity &amp; workforce alignment</h3>
-            <p>Place changing skills within the curriculum—aligned to the Midwest employers your graduates join, from insurance and finance to healthcare, agriculture technology, and manufacturing. Not enterprise security testing or compliance certification.</p>
-            <ul><li>AI-readiness or cybersecurity curriculum review</li><li>Regional employer and peer-program skill analysis</li><li>Integration recommendations</li></ul>
-          </article>
-          <article class="service" data-reveal>
-            <h3>Faculty support &amp; learning technology</h3>
-            <p>Help faculty put teachable experiences into practice.</p>
-            <ul><li>Workshops and handoff sessions</li><li>Technical setup and instructor guidance</li><li>Approved content packaged for an agreed LMS</li></ul>
-            <p class="service-note">Workflow consulting, custom learning tools, and integrations are separately scoped.</p>
-          </article>
-          <article class="service" data-reveal>
-            <h3>Ongoing curriculum support</h3>
-            <p>Keep materials current through a defined support scope.</p>
-            <ul><li>Periodic reviews and technology scans</li><li>Prioritized update backlog</li><li>Defined course updates and faculty consultation</li></ul>
-          </article>
-        </div>
-        <p class="section-close" data-reveal>Start with the priority that matters most. We'll work with you to define a useful scope and clear deliverables.</p>
+        <p class="section-close"><strong>From first review to faculty handoff.</strong> Workshops, LMS packaging, technical setup, and ongoing updates can support any engagement.</p>
       </div>
     </section>
 
     <section class="section work" id="selected-work" aria-labelledby="work-heading">
-      <div class="container work-layout">
-        <div class="work-intro">
-          <div class="section-heading">
-            <p class="eyebrow">02 / Selected work</p>
-            <h2 id="work-heading">Teaching and curriculum<br class="desktop-break"> design in practice</h2>
-            <p>Examples from Alex's teaching and curriculum design show how concepts connect to applied tasks and assessable work.</p>
-          </div>
-        </div>
-        <div class="work-flow">
-        <article class="work-entry" data-reveal>
-          <div class="work-title"><p class="context-label">Teaching experience</p><h3>Connecting a web interface to a working application</h3><p class="work-domain">Web development / INFO 2589</p></div>
-          <div class="work-description">
-            <p>Connecting frontend and backend takes more than syntax. Alex's instruction progresses from guided TypeScript/React and Express tasks to an Events App assignment, compilation/testing, GitHub submissions, and screenshots of running work.</p>
-            <p class="capability"><strong>Design focus:</strong> Running code and documented implementation make application development assessable.</p>
-            <details>
-              <summary>Explore the web development activity</summary>
-              <div class="sample">
-                <p class="eyebrow">Illustrative curriculum sample</p>
-                <p>Retrieve an event list from an Express endpoint and display it in React. Include loading, empty, and error states.</p>
-                <p><strong>Submit:</strong> Code and a short demonstration tracing a request from interface to endpoint and back.</p>
-                <p><strong>Assess:</strong> Correct data flow, usable states, and a clear explanation of the implementation.</p>
-              </div>
-            </details>
-          </div>
-        </article>
-        <article class="work-entry" data-reveal>
-          <div class="work-title"><p class="context-label">Curriculum design example</p><h3>Turning systems concepts into troubleshooting practice</h3><p class="work-domain">Systems administration / INFO 2451</p></div>
-          <div class="work-description">
-            <p>Systems knowledge needs a practical test. INFO 2451 materials cover Windows/Linux administration, permissions, Active Directory, network services, virtualization, security, and recovery. Related planning pairs demonstrations and guided labs with quizzes and troubleshooting evidence.</p>
-            <p class="capability"><strong>Design focus:</strong> Connect configuration decisions to observable checks.</p>
-            <details>
-              <summary>Explore the troubleshooting activity</summary>
-              <div class="sample">
-                <p class="eyebrow">Illustrative curriculum sample</p>
-                <p>Diagnose an access-permission issue in an isolated training environment. Make a justified change, then verify authorized access without broadening unrelated permissions.</p>
-                <p><strong>Submit:</strong> Diagnosis, configuration evidence, and repeatable validation steps.</p>
-                <p><strong>Assess:</strong> Reasoning, appropriate permissions, and verification of the fix.</p>
-              </div>
-            </details>
-          </div>
-        </article>
-        <article class="work-entry" data-reveal>
-          <div class="work-title"><p class="context-label">Course proposal</p><h3>Applying AI to a business workflow</h3><p class="work-domain">Applied AI / Phased pathway</p></div>
-          <div class="work-description">
-            <p>Begin with task fit, not a tool. Alex's proposed course combines AI fluency, prompting, output evaluation, process analysis, no-code automation, and responsible use: accuracy, privacy, and bias.</p>
-            <p>It proposes a project with a local Midwest business or nonprofit team and a portfolio artifact; a later technical course would cover AI application development and deployment.</p>
-            <p class="capability"><strong>Design focus:</strong> Sequence practical judgment before technical depth.</p>
-            <details>
-              <summary>Explore the AI workflow activity</summary>
-              <div class="sample">
-                <p class="eyebrow">Illustrative curriculum sample</p>
-                <p>Use fictional or synthetic documents to map a workflow and prototype an AI-assisted step. Evaluate outputs for accuracy and bias; identify human-review points.</p>
-                <p><strong>Submit:</strong> Workflow map, prototype, and evaluation notes.</p>
-                <p><strong>Assess:</strong> Task fit, output checking, and responsible information handling.</p>
-              </div>
-            </details>
-          </div>
-        </article>
+      <div class="container">
+        <div class="section-heading split-heading" data-reveal><div><p class="eyebrow">02 / Experience &amp; examples</p><h2 id="work-heading">See the thinking.<br><em>Explore the work.</em></h2></div><p>Good curriculum makes its reasoning visible. Explore how concepts become applied tasks and evidence of learning.</p></div>
+        <a class="featured-work" href="./curriculum-sample.html" data-reveal>
+          <div class="featured-copy"><p class="eyebrow">Featured / Illustrative design</p><h3>From outcomes<br>to evidence.</h3><p>A complete web development example: three modules, an assessment rubric, and faculty handoff notes.</p><span class="featured-link">Explore the curriculum sample <span aria-hidden="true">↗</span></span><span class="sample-disclaimer">An original demonstration of the approach, with no institutional adoption or student results claimed.</span></div>
+          <div class="matrix-art" aria-hidden="true"><div class="matrix-caption"><span>CURRICULUM ALIGNMENT</span><span>01—03</span></div><div class="mini-matrix"><span></span><span>Build</span><span>Reason</span><span>Explain</span><span>Trace</span><span class="matrix-i">I</span><span class="matrix-i">I</span><span class="matrix-none">—</span><span>Build</span><span class="matrix-r">R</span><span class="matrix-r">R</span><span class="matrix-i">I</span><span>Verify</span><span class="matrix-d">D</span><span class="matrix-d">D</span><span class="matrix-d">D</span></div><div class="matrix-legend"><span>I / Introduce</span><span>R / Reinforce</span><span>D / Demonstrate</span></div></div>
+        </a>
+        <div class="work-cases">
+          <details class="work-case" open><summary><span class="case-number">01</span><span class="case-title">Connecting interface to application<span>Web development / INFO 2589</span></span><span class="case-type">Teaching experience</span><span class="disclosure-icon" aria-hidden="true"></span></summary><div class="case-body"><div><p>Alex's instruction progresses from guided TypeScript/React and Express tasks to an Events App assignment, testing, GitHub submissions, and screenshots of running work.</p><p class="capability"><strong>Design focus:</strong> Make application development assessable through running code and documented implementation.</p></div><div class="sample"><p class="eyebrow">Illustrative activity</p><p>Retrieve events from an Express endpoint and display them in React, including loading, empty, and error states.</p><p><strong>Evidence:</strong> Code and a demonstration tracing a request from interface to endpoint and back.</p></div></div></details>
+          <details class="work-case"><summary><span class="case-number">02</span><span class="case-title">Turning systems knowledge into practice<span>Systems administration / INFO 2451</span></span><span class="case-type">Curriculum design example</span><span class="disclosure-icon" aria-hidden="true"></span></summary><div class="case-body"><div><p>INFO 2451 materials cover Windows/Linux administration, permissions, Active Directory, network services, virtualization, security, and recovery. Related planning pairs guided labs with troubleshooting evidence.</p><p class="capability"><strong>Design focus:</strong> Connect configuration decisions to observable checks.</p></div><div class="sample"><p class="eyebrow">Illustrative activity</p><p>Diagnose an access-permission issue in an isolated training environment. Make a justified change and verify authorized access.</p><p><strong>Evidence:</strong> Diagnosis, configuration records, and repeatable validation steps.</p></div></div></details>
+          <details class="work-case"><summary><span class="case-number">03</span><span class="case-title">Applying AI with practical judgment<span>Applied AI / Phased pathway</span></span><span class="case-type">Course proposal</span><span class="disclosure-icon" aria-hidden="true"></span></summary><div class="case-body"><div><p>Alex's proposed course combines AI fluency, prompting, output evaluation, process analysis, no-code automation, and responsible use. It proposes a local business or nonprofit project before a later technical course.</p><p class="capability"><strong>Design focus:</strong> Sequence practical judgment before technical depth.</p></div><div class="sample"><p class="eyebrow">Illustrative activity</p><p>Map a workflow with synthetic documents, prototype an AI-assisted step, and identify human-review points.</p><p><strong>Evidence:</strong> A workflow map, prototype, and evaluation notes addressing accuracy and bias.</p></div></div></details>
         </div>
       </div>
     </section>
 
     <section class="section approach" id="approach" aria-labelledby="approach-heading">
       <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">03 / Approach</p>
-          <h2 id="approach-heading">A manageable way to begin.</h2>
-          <p>A focused review, single-course project, or phased engagement can be a starting point.</p>
-        </div>
-        <ol class="process" data-reveal-stagger>
-          <li data-reveal><span class="process-number" aria-hidden="true">01</span><h3>Understand the need</h3><p>Discuss priorities, students, faculty capacity, existing materials, and constraints.</p></li>
-          <li data-reveal><span class="process-number" aria-hidden="true">02</span><h3>Agree on the work</h3><p>Define scope, deliverables, responsibilities, review points, timing, and budget.</p></li>
-          <li data-reveal><span class="process-number" aria-hidden="true">03</span><h3>Build, review, and hand over</h3><p>Develop with faculty input. Provide agreed materials and implementation guidance, with ongoing support if scoped.</p></li>
-        </ol>
-        <div class="scope-note" data-reveal><h3>Useful work starts with a realistic scope.</h3><p>We discuss your priorities and available resources, then propose clear deliverables and a manageable path forward.</p><p>A smaller budget may call for a smaller or phased scope.</p></div>
+        <div class="section-heading split-heading" data-reveal><div><p class="eyebrow">03 / A practical beginning</p><h2 id="approach-heading">Meaningful progress.<br><em>Manageable scope.</em></h2></div><p>A focused review gives faculty and academic leaders a concrete basis for deciding what to change.</p></div>
+        <article class="engagement" aria-labelledby="engagement-heading" data-reveal><div class="engagement-intro"><p class="eyebrow">Example engagement</p><span class="engagement-symbol" aria-hidden="true">↗</span><h3 id="engagement-heading">One course.<br>A clearer next step.</h3><p>A focused course review for stronger assessment, updated applied work, or better alignment with program outcomes.</p><a class="button" href="mailto:alexandergshaw@gmail.com?subject=Focused%20course%20review">Discuss a course review <span aria-hidden="true">↗</span></a></div><dl class="engagement-details"><div><dt><span>01</span> What we review</dt><dd>Your syllabus, course and program outcomes, selected assignments and rubrics, and faculty priorities.</dd></div><div><dt><span>02</span> What you receive</dt><dd>An editable outcomes-to-assessment map, prioritized findings, and a recommended sequence of updates.</dd></div><div><dt><span>03</span> How faculty participate</dt><dd>Kickoff, feedback on draft findings, and handoff. Faculty retain academic decisions and approval.</dd></div><div><dt><span>04</span> Timing &amp; investment</dt><dd>A written proposal sets the schedule, fee, review windows, and deliverables after an initial discussion.</dd></div></dl></article>
+        <ol class="process"><li data-reveal><span class="process-number">01</span><h3>Understand the need.</h3><p>Discuss priorities, students, faculty capacity, existing materials, and constraints.</p></li><li data-reveal><span class="process-number">02</span><h3>Agree on the work.</h3><p>Define deliverables, responsibilities, review points, timing, and budget.</p></li><li data-reveal><span class="process-number">03</span><h3>Build. Review. Hand over.</h3><p>Develop with faculty input and provide materials with clear implementation guidance.</p></li></ol>
+        <div class="brief-link"><div><span class="document-icon" aria-hidden="true">↳</span><div><h3>Bring your team into the conversation.</h3><p>A one-page overview of services, experience, and a practical starting point.</p></div></div><a class="text-link" href="./output/pdf/access-capabilities.pdf" download>Download capabilities <span class="file-type">PDF · 1 page</span><span aria-hidden="true">↓</span></a></div>
       </div>
     </section>
 
-    <section class="section about" id="about" aria-labelledby="about-heading">
-      <div class="container about-grid">
-        <div data-reveal><p class="eyebrow">04 / About</p><h2 id="about-heading">Experience in the classroom and in software delivery</h2></div>
-        <div class="about-copy" data-reveal>
-          <p class="bio-lead">Access Curriculum &amp; Technology is a founder-led consulting practice based in Omaha, Nebraska, working with colleges across the Midwest.</p>
-          <p>Alex Shaw brings enterprise software-engineering leadership, including lead engineering work at Mutual of Omaha, alongside teaching and curriculum-development experience at Metropolitan College and Midland University in Fremont, Nebraska.</p>
-          <p>Those Midwest roots inform our purpose: help regional colleges address practical gaps, support faculty expertise, and create learning experiences students can demonstrate to local and regional employers. We work collaboratively, with usable materials and a clear handoff.</p>
-        </div>
-      </div>
-    </section>
+    <section class="section about" id="about" aria-labelledby="about-heading"><div class="container about-grid"><div data-reveal><p class="eyebrow">04 / The person behind the practice</p><h2 id="about-heading">Classroom insight.<br>Engineering<br><em>perspective.</em></h2><div class="founder-signature"><span class="founder-monogram" aria-hidden="true">AS</span><div><strong>Alex Shaw</strong><span>Founder / Omaha, Nebraska</span></div></div></div><div class="about-copy" data-reveal><p class="bio-lead">Access Curriculum &amp; Technology brings software delivery and college teaching to the same table.</p><p>Alex Shaw's experience includes enterprise software-engineering leadership and lead engineering work at Mutual of Omaha, alongside teaching and curriculum development at Metropolitan Community College and Midland University.</p><p>That combination shapes the work: respect faculty expertise, make technical concepts teachable, and deliver materials that remain useful after handoff.</p><p class="experience-note">Affiliations describe Alex's individual professional experience, not consulting client relationships or institutional endorsements.</p><a class="text-link" href="#contact">Talk with Alex <span aria-hidden="true">↗</span></a></div></div></section>
 
-    <section class="section questions" aria-labelledby="questions-heading">
-      <div class="container questions-grid">
-        <div data-reveal><p class="eyebrow">A few practical details</p><h2 id="questions-heading">Before we talk.</h2></div>
-        <div class="faq-list" data-reveal>
-          <details><summary>Can we start with one course?</summary><p>Yes. A refresh, new build, or focused review can be scoped independently.</p></details>
-          <details><summary>How much faculty involvement is needed?</summary><p>We agree on subject-matter input, review points, and handoff at the start.</p></details>
-          <details><summary>Can you work with our LMS?</summary><p>We confirm platform, format, access, and implementation scope before committing.</p></details>
-          <details><summary>Can we edit and reuse the materials?</summary><p>We plan for editable deliverables and handoff. Ownership, licensing, and reuse terms are documented in the agreement, including any third-party resources.</p></details>
-          <details><summary>Do you work with colleges outside Nebraska?</summary><p>Yes. We're based in Omaha and partner with colleges across Iowa, Kansas, Missouri, South Dakota, and the wider Midwest—remotely, with on-campus sessions available for regional institutions.</p></details>
-        </div>
-      </div>
-    </section>
+    <section class="section questions" aria-labelledby="questions-heading"><div class="container questions-grid"><div><p class="eyebrow">Before we begin</p><h2 id="questions-heading">A few practical<br><em>questions.</em></h2></div><div class="faq-list"><details><summary>Can we start with one course?</summary><p>Yes. A refresh, new build, or focused review can be scoped independently.</p></details><details><summary>How much faculty involvement is needed?</summary><p>Faculty identify priorities, review changes, and approve academic content. We agree on reviewers, feedback windows, and handoff at the start so the work fits available capacity.</p></details><details><summary>Can you work with our LMS?</summary><p>We confirm platform, format, access, and implementation scope before committing.</p></details><details><summary>Can we edit and reuse the materials?</summary><p>We plan for editable deliverables and handoff. Ownership, licensing, and reuse terms are documented in the agreement, including third-party resources.</p></details><details><summary>What is included in the engagement?</summary><p>The proposal identifies courses, deliverables, review rounds, implementation support, and fee. A review provides findings and recommendations; rebuilding, custom tools, and integrations are included when specified. AI and cybersecurity services focus on curriculum, rather than enterprise security testing or compliance certification.</p></details><details><summary>Do you work outside Nebraska?</summary><p>Yes. We're available to colleges across Iowa, Kansas, Missouri, South Dakota, and the wider Midwest, with remote collaboration and on-campus sessions for regional institutions.</p></details></div></div></section>
 
-    <section class="section contact" id="contact" aria-labelledby="contact-heading">
-      <div class="container contact-grid">
-        <div data-reveal><p class="eyebrow">05 / Contact</p><h2 id="contact-heading">What would help your program move forward?</h2><p>Tell us what you're working on and where support would be useful. You do not need a finished project brief to start a conversation.</p></div>
-        <div class="contact-details" data-reveal>
-          <p class="contact-prompts">A helpful starting point: the course or program, the challenge, and any timing constraints.</p>
-          <a class="email-address" href="mailto:alexandergshaw@gmail.com">alexandergshaw@gmail.com</a>
-          <div class="actions">
-            <a class="button button-light" href="mailto:alexandergshaw@gmail.com?subject=Curriculum%20and%20technology%20conversation">Start a conversation <span aria-hidden="true">↗</span></a>
-            <button class="copy-email" type="button" hidden>Copy email</button>
-          </div>
-          <p class="email-help">The link opens your email app.</p>
-          <p class="service-area">Based in Omaha, Nebraska · Serving colleges across the Midwest</p>
-          <p class="copy-status" role="status" aria-live="polite"></p>
-        </div>
-      </div>
-    </section>
+    <section class="section contact" id="contact" aria-labelledby="contact-heading"><div class="contact-contours" aria-hidden="true"></div><div class="container contact-grid"><div><p class="eyebrow">Let's build what's next</p><h2 id="contact-heading">Your next chapter<br><em>starts here.</em></h2><p>Tell us about your program and where support would help. A finished project brief is optional.</p></div><div class="contact-details"><span class="contact-arrow" aria-hidden="true">↗</span><p class="contact-prompts">A course. A challenge.<br>A conversation worth having.</p><a class="email-address" href="mailto:alexandergshaw@gmail.com">alexandergshaw@gmail.com</a><div class="actions"><a class="button button-accent" href="mailto:alexandergshaw@gmail.com?subject=Curriculum%20and%20technology%20conversation">Email Alex about your program <span aria-hidden="true">↗</span></a><button class="copy-email" type="button" hidden>Copy email</button></div><p class="email-help">Opens your email app.</p><p class="copy-status" role="status" aria-live="polite"></p></div></div></section>
   </main>
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div><p class="footer-brand">Access Curriculum &amp; Technology</p><p>Omaha, Nebraska · Serving the Midwest</p></div>
-      <a href="mailto:alexandergshaw@gmail.com">alexandergshaw@gmail.com</a>
-      <p class="copyright">© 2026 Access Curriculum &amp; Technology</p>
-    </div>
-  </footer>
+  <footer class="site-footer"><div class="container"><div class="footer-inner"><span>Curriculum &amp; Technology</span><span>Omaha, Nebraska · Serving the Midwest</span><a href="#top">Back to top <span aria-hidden="true">↑</span></a></div><div class="footer-wordmark" aria-hidden="true">Access<span>.</span><span class="footer-star">✳</span></div><div class="footer-bottom"><p>Practical computing education. Built with your faculty.</p><p>© 2026 Access Curriculum &amp; Technology</p></div></div></footer>
 </body>
 </html>
