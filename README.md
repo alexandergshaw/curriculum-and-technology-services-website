@@ -1,18 +1,20 @@
 # Access Curriculum & Technology
 
-A dependency-free static website for Alex Shaw's computing course-development services. No build step, external fonts, analytics, or services are required.
+A dependency-free static website for Access's computing course-development services, offered by Alex Shaw and Baha Marupov. No build step, external fonts, analytics, or services are required.
 
 ## Core message and structure
 
-Alex is a software professional and a teaching professional who helps colleges **modernize existing computing courses or create new ones**. The first screen states that offer and shows both professional backgrounds. Keep future changes focused on this message.
+Alex Shaw and Baha Marupov are each software professionals and college educators who help colleges **modernize existing computing courses or create new ones**. The first screen states that offer and gives both names equal prominence. Keep future changes focused on this message.
 
-The homepage has four destinations: **Services**, **Experience**, **Course example**, and **Contact Alex**. Services presents the two offers and a short explanation of faculty collaboration. Experience supports the offer with Alex's individual work history. The course example demonstrates the teaching materials; the interactive curriculum map lives on that separate page. Contact repeats the two services and provides email and a one-page overview.
+The homepage has four destinations: **Services**, **Experience**, **Course example**, and **Contact Alex**. Services opens with the origin story: teaching at colleges showed Alex and Baha how course updates compete with teaching and student support for faculty time as technology changes. Access helps with that work through the two course-development services. Compensation differences appear only as supporting context. Experience introduces both people; named organizations describe Alex's individual work history. The course example demonstrates teaching materials; the interactive curriculum map lives on that separate page. Contact repeats the two services and provides Alex's email and a one-page overview.
+
+Use professional, everyday language and company voice ("we") for services. Keep the story within the Services introduction, without adding another navigation item or large section. Both people have confirmed software and college teaching experience; do not invent additional credentials for either person.
 
 ## Preview and hosting
 
 Run `python tools/preview.py` and visit `http://127.0.0.1:8765`. The preview binds only to loopback and serves an explicit list of public site assets; it does not expose directory listings, Git data, or tooling. Stop it with Ctrl+C when finished. The static pages also support opening directly in a browser outside the automated preview workflow.
 
-Upload `index.html`, `curriculum-sample.html`, `styles.css`, `sample.css`, `script.js`, `favicon.svg`, `downloads/`, and `output/pdf/` together to any ordinary static host. Keep relative paths intact. No deployment or account connection is configured here. `tools/` and `output/previews/` are local development resources and are not needed on the host.
+The live site is [GitHub Pages](https://alexandergshaw.github.io/curriculum-and-technology-services-website/). Completed changes are committed and pushed to `main`; verify the published content after pushing. To use another static host, upload `index.html`, `curriculum-sample.html`, `styles.css`, `sample.css`, `script.js`, `favicon.svg`, `downloads/`, and `output/pdf/` together, keeping relative paths intact. `tools/` and `output/previews/` are local development resources and are not needed on the host.
 
 ## Editing
 
