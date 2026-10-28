@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "fixture_notice": "Illustrative teaching fixtures. These responses were authored for this example; they are not live model outputs or measured benchmark results.",
+  "documents": [
+    {
+      "id": "wifi",
+      "version": 1,
+      "title": "Connecting to campus Wi-Fi",
+      "status": "current",
+      "current": true,
+      "text": "Students connect to the Campus-Student Wi-Fi network using their college username and password. Visitors use Campus-Guest with a day pass from the reception desk. The guest network does not provide access to campus printers."
+    },
+    {
+      "id": "printing",
+      "version": 1,
+      "title": "Sending a print job",
+      "status": "current",
+      "current": true,
+      "text": "Students can send a print job to the library printers while connected to the college network. Select Library-Student from the printer list and collect the job using a campus ID card. This article does not describe remote printing."
+    },
+    {
+      "id": "password",
+      "version": 1,
+      "title": "Resetting a password",
+      "status": "current",
+      "current": true,
+      "text": "To reset a forgotten password, open Password Help and choose Reset password. Complete verification with the recovery method already registered on the account. If that recovery method is unavailable, contact the service desk for identity verification. Never send a password or verification code in a support message."
+    },
+    {
+      "id": "software",
+      "version": 1,
+      "title": "Requesting software installation",
+      "status": "superseded",
+      "current": false,
+      "text": "To request software installation on a college-managed computer, email the service desk with the computer asset number, software name, and teaching purpose. Wait for approval before installing software."
+    },
+    {
+      "id": "software",
+      "version": 2,
+      "title": "Requesting software installation",
+      "status": "current",
+      "current": true,
+      "text": "To request software installation on a college-managed computer, submit a Software request in the Service Portal. Include the computer asset number, software name, and teaching purpose. Email installation requests are no longer accepted. Wait for approval before installing software."
+    }
+  ],
+  "cases": [
+    {
+      "id": "supported",
+      "label": "A supported answer",
+      "question": "How do students connect to campus Wi-Fi?",
+      "source_id": "wifi",
+      "source_version": 1,
+      "baseline_source": {"id": "wifi", "version": 1},
+      "response": {
+        "text": "Connect to Campus-Student using your college username and password.",
+        "citations": [{"source_id": "wifi", "version": 1}],
+        "abstain": false
+      },
+      "expected_decision": "accept",
+      "explanation": "The current article directly supports both the network name and the sign-in instructions. Accept this answer for the stated question; it makes no claim about troubleshooting or account eligibility.",
+      "criterion": "Identify the passage that supports each instruction.",
+      "implementation_change": "Retain the source identifier and version with the response so the instruction can be traced and checked after a document changes.",
+      "test_expectation": "The response has a known, current citation and the cited passage supports its instructions. The first check is automated; the second is a documented human judgment.",
+      "alternative_judgment": "A small wording revision is acceptable if it preserves the meaning. Referring this ordinary, supported question to a person needs an additional reason."
+    },
+    {
+      "id": "unsupported",
+      "label": "A citation that proves too little",
+      "question": "Can I send a print job from home using my personal internet connection?",
+      "source_id": "printing",
+      "source_version": 1,
+      "baseline_source": {"id": "printing", "version": 1},
+      "response": {
+        "text": "Yes. You can send a print job from any home internet connection and collect it later with your campus ID card.",
+        "citations": [{"source_id": "printing", "version": 1}],
+        "abstain": false
+      },
+      "expected_decision": "revise",
+      "explanation": "The citation exists, but the article only describes printing on the college network. It does not establish that printing from a personal home connection works. Revise the answer to state the supported procedure and its limit.",
+      "criterion": "Distinguish a valid source reference from evidence that supports a claim.",
+      "implementation_change": "Add an evaluation case for the unsupported remote-access claim. Structural citation checks alone cannot detect this error.",
+      "test_expectation": "Structural validation passes. Human evaluation marks the home-internet claim unsupported; the evaluation must not count this as a correct answer just because a citation exists.",
+      "alternative_judgment": "Referring the unresolved remote-printing question to the service desk is also defensible if the answer explains the gap. Claiming that remote printing is impossible is not supported either."
+    },
+    {
+      "id": "refusal",
+      "label": "An unnecessary refusal",
+      "question": "How can I reset my password?",
+      "source_id": "password",
+      "source_version": 1,
+      "baseline_source": {"id": "password", "version": 1},
+      "response": {
+        "text": "I cannot answer this question from the available documents. Contact the service desk.",
+        "citations": [],
+        "abstain": true
+      },
+      "expected_decision": "revise",
+      "explanation": "The current article provides a self-service reset procedure and explains when to contact a person. Revise the answer to provide that procedure and preserve the escalation condition. Refusing every question would hide errors while making the assistant unhelpful.",
+      "criterion": "Assess both unsupported answers and missed opportunities to answer.",
+      "implementation_change": "Include answerable questions in the evaluation set and record unnecessary refusals separately from appropriate referrals.",
+      "test_expectation": "The refusal is structurally valid but fails the case's usefulness criterion. A revised answer should include the supported steps and the condition for human assistance.",
+      "alternative_judgment": "Referral is justified if the user reports losing access to the registered recovery method. That information is not present in this question."
+    },
+    {
+      "id": "outdated",
+      "label": "An answer overtaken by a change",
+      "question": "How do I request software installation now?",
+      "source_id": "software",
+      "source_version": 2,
+      "baseline_source": {"id": "software", "version": 2},
+      "response": {
+        "text": "Email the service desk with your computer asset number, software name, and teaching purpose. Wait for approval before installing.",
+        "citations": [{"source_id": "software", "version": 1}],
+        "abstain": false
+      },
+      "revised_response": {
+        "text": "Submit a Software request in the Service Portal with your computer asset number, software name, and teaching purpose. Email installation requests are no longer accepted. Wait for approval before installing.",
+        "citations": [{"source_id": "software", "version": 2}],
+        "abstain": false
+      },
+      "expected_decision": "revise",
+      "explanation": "Version 2 replaces email requests with the Service Portal. The answer still cites version 1, so the source-version check should flag it. Revise the instruction and citation, rerun the checks, and record the teaching-material change.",
+      "criterion": "Use current evidence and explain how a change affects the application and assignment.",
+      "implementation_change": "Exclude superseded sources from retrieval, reject superseded citations, and add a regression case for the new request route. Update the assignment and instructor answer together.",
+      "test_expectation": "The original answer passes with the original source collection but is flagged after version 2 arrives. The revised authored answer cites version 2 and passes the structural checks; a reviewer still checks its meaning.",
+      "alternative_judgment": "If the authority or currency of conflicting documents cannot be established, referring the question to the responsible person is defensible. In this fixture, the supplied metadata explicitly identifies the approved current version."
+    }
+  ]
+}

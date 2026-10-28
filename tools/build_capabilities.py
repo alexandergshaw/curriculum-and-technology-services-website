@@ -24,7 +24,7 @@ styles = {
 c = canvas.Canvas(str(OUTPUT), pagesize=(612, 792), pageCompression=1)
 c.setTitle("Access Curriculum & Technology | Curriculum Services")
 c.setAuthor("Alex Shaw and Baha Marupov | Access Curriculum & Technology")
-c.setSubject("Course and program reviews, new computing courses, and the Annual Curriculum Partnership")
+c.setSubject("Course and program reviews, new computing courses, the Annual Curriculum Partnership, and an illustrative AI course sample")
 c.setFillColor(PAPER)
 c.rect(0, 0, 612, 792, fill=1, stroke=0)
 c.setFillColor(TEAL)
@@ -132,7 +132,12 @@ paragraph('<link href="mailto:alexandergshaw@gmail.com" color="#2d6452">alexande
 paragraph(
     '<link href="mailto:alexandergshaw@gmail.com?subject=Annual%20Curriculum%20Partnership" '
     'color="#2d6452">Ask about the Annual<br/>Curriculum Partnership</link>',
-    390, 73, 180, "small",
+    390, 77, 180, "small",
+)
+paragraph(
+    '<link href="https://alexandergshaw.github.io/curriculum-and-technology-services-website/ai-course-example.html" '
+    'color="#2d6452">AI course outline + offline sample</link>',
+    390, 49, 180, "small",
 )
 c.showPage()
 c.save()

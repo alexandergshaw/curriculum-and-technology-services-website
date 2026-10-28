@@ -8,11 +8,16 @@ ASSETS = {
     "/": ("index.html", "text/html; charset=utf-8"),
     "/index.html": ("index.html", "text/html; charset=utf-8"),
     "/curriculum-sample.html": ("curriculum-sample.html", "text/html; charset=utf-8"),
+    "/ai-course-example.html": ("ai-course-example.html", "text/html; charset=utf-8"),
+    "/ai-example.css": ("ai-example.css", "text/css; charset=utf-8"),
+    "/ai-example.js": ("ai-example.js", "text/javascript; charset=utf-8"),
     "/styles.css": ("styles.css", "text/css; charset=utf-8"),
     "/sample.css": ("sample.css", "text/css; charset=utf-8"),
     "/script.js": ("script.js", "text/javascript; charset=utf-8"),
     "/favicon.svg": ("favicon.svg", "image/svg+xml"),
     "/downloads/illustrative-curriculum-map.csv": ("downloads/illustrative-curriculum-map.csv", "text/csv; charset=utf-8"),
+    "/teaching-sample/data/cases.json": ("teaching-sample/data/cases.json", "application/json; charset=utf-8"),
+    "/downloads/applied-ai-sample.zip": ("downloads/applied-ai-sample.zip", "application/zip"),
     "/output/pdf/access-capabilities.pdf": ("output/pdf/access-capabilities.pdf", "application/pdf"),
 }
 
