@@ -10,6 +10,8 @@ The homepage has four destinations: **Services**, **Experience**, **Course examp
 
 Use professional, everyday language and company voice ("we") for services. Keep the story within the Services introduction, without adding another navigation item or large section. Both people have confirmed software and college teaching experience; do not invent additional credentials for either person.
 
+Keep the presentation minimal: one hero paragraph, a compact equal introduction of both people, three service columns with visible deliverables, one shared working-terms block, and one course-example feature. Use the existing green/ivory/lime palette and serif accents with restrained rules. Avoid repeating professional labels, service slogans, decorative card icons, and links to the same destination within a section. Keep substantive scope, biography facts, sample qualifications, and faculty approval visible; do not hide them in accordions or rely on the PDF alone.
+
 ## Service boundaries
 
 The first service is a defined review/update project, covering course content, tools, learning goals, prerequisites, course sequence, priorities, and agreed material revisions. New development remains focused on courses, not new certificates or degree programs. The Annual Curriculum Partnership includes an annual review, technology/workplace changes, agreed updates and faculty consultation during the year, a record of changes, remaining priorities, and a refreshed plan. Covered courses/program, included revisions, consultation, schedule, and fee are agreed in advance; additional work is scoped separately. Internal catalog prices and hours are planning examples, not public rates or unlimited-revision promises.
