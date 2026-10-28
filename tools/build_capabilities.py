@@ -9,11 +9,11 @@ from reportlab.platypus import Paragraph
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "output" / "pdf" / "access-capabilities.pdf"
 OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-INK = colors.HexColor("#292724")
-BRAND = colors.HexColor("#766045")
-MUTED = colors.HexColor("#625e58")
-SOFT = colors.HexColor("#ece9e3")
-LINE = colors.HexColor("#d5d0c8")
+INK = colors.HexColor("#223247")
+BRAND = colors.HexColor("#365575")
+MUTED = colors.HexColor("#526579")
+SOFT = colors.HexColor("#e5ecf3")
+LINE = colors.HexColor("#c9d5e1")
 WHITE = colors.HexColor("#ffffff")
 styles = {
     "body": ParagraphStyle("body", fontName="Helvetica", fontSize=10, leading=14, textColor=MUTED),
@@ -126,15 +126,15 @@ y = paragraph(
 assert y >= 104, "Scope agreement overlaps the contact footer"
 rule(89)
 paragraph("CONTACT ALEX ABOUT YOUR COURSES OR PROGRAM", 42, 76, 310, "label")
-paragraph('<link href="mailto:alexandergshaw@gmail.com" color="#766045">alexandergshaw@gmail.com</link>', 42, 59, 310)
+paragraph('<link href="mailto:alexandergshaw@gmail.com" color="#365575">alexandergshaw@gmail.com</link>', 42, 59, 310)
 paragraph(
     '<link href="mailto:alexandergshaw@gmail.com?subject=Annual%20Curriculum%20Partnership" '
-    'color="#766045">Ask about the Annual<br/>Curriculum Partnership</link>',
+    'color="#365575">Ask about the Annual<br/>Curriculum Partnership</link>',
     390, 77, 180, "small",
 )
 paragraph(
     '<link href="https://alexandergshaw.github.io/curriculum-and-technology-services-website/ai-course-example.html" '
-    'color="#766045">AI course outline + offline sample</link>',
+    'color="#365575">AI course outline + offline sample</link>',
     390, 49, 180, "small",
 )
 c.showPage()

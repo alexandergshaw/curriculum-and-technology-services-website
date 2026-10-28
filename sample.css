@@ -100,7 +100,7 @@
 .outcome-controls { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--dark-line); padding: 3px; margin: 1.2rem 0 0; min-width: 0; gap: 3px; }
 .outcome-controls label { position: relative; cursor: pointer; min-width: 0; }
 .outcome-controls input { position: absolute; width: 1px; height: 1px; opacity: 0; }
-.outcome-controls label > span { display: flex; align-items: center; justify-content: center; gap: .5rem; min-height: 40px; color: var(--on-dark); font-size: .74rem; transition: background .2s, color .2s; }
+.outcome-controls label > span { display: flex; align-items: center; justify-content: center; gap: .5rem; min-height: 40px; color: var(--on-dark); font-size: .74rem; }
 .tab-number { font: .62rem var(--mono); opacity: .75; }
 .outcome-controls input:checked + span { background: var(--accent); color: var(--night); }
 .outcome-controls input:checked + span .tab-number { opacity: 1; }
