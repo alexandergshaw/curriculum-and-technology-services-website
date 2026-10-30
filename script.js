@@ -15,21 +15,19 @@
 
   const outcomes = {
     implementation: {
-      code: "P1", title: "Build & test", edition: "01 / 03", levels: ["I", "R", "D"],
+      code: "P1", title: "Build & Test", edition: "01 / 03", levels: ["I", "R", "D"],
       evidence: "Working code and repeatable tests demonstrate that the application handles normal, empty, loading, and error states.",
     },
     judgment: {
-      code: "P2", title: "Reason & decide", edition: "02 / 03", levels: ["I", "R", "D"],
+      code: "P2", title: "Reason & Decide", edition: "02 / 03", levels: ["I", "R", "D"],
       evidence: "A design rationale explains the request flow, weighs technical choices, and documents responsible use of synthetic data.",
     },
     communication: {
-      code: "P3", title: "Explain & reproduce", edition: "03 / 03", levels: ["none", "I", "D"],
+      code: "P3", title: "Explain & Reproduce", edition: "03 / 03", levels: ["none", "I", "D"],
       evidence: "Setup instructions, an annotated demonstration, and verification notes let another person reproduce the work. Module 1 does not directly assess this outcome.",
     },
   };
   const levelNames = { I: "Introduced", R: "Reinforced", D: "Demonstrated", none: "Not assessed" };
-  const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
-  let animation;
 
   controls.addEventListener("change", (event) => {
     const input = event.target;
@@ -50,11 +48,6 @@
       if (connections[index]) connections[index].dataset.muted = String(level === "none");
     });
     evidence.textContent = outcome.evidence;
-    const node = explorer.querySelector(".outcome-node");
-    if (!motionPreference.matches && node.animate) {
-      if (animation) animation.cancel();
-      animation = node.animate([{ transform: "translateY(-4px)" }, { transform: "none" }], { duration: 300, easing: "ease-out" });
-    }
   });
   // Never show controls before their interaction is ready.
   controls.hidden = false;
@@ -78,26 +71,6 @@ if (copyButton && copyStatus && emailLink && navigator.clipboard && window.isSec
 }
 
 (() => {
-  const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
-
-  if (!("IntersectionObserver" in window)) {
-    revealItems.forEach((el) => el.classList.add("is-visible"));
-  } else {
-    document.querySelectorAll("[data-reveal-stagger]").forEach((group) => {
-      Array.from(group.querySelectorAll("[data-reveal]")).forEach((el, index) => {
-        el.style.animationDelay = `${index * 70}ms`;
-      });
-    });
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
-      });
-    }, { rootMargin: "0px 0px -12% 0px", threshold: 0.12 });
-    revealItems.forEach((el) => revealObserver.observe(el));
-  }
-
   const navLinks = Array.from(document.querySelectorAll('.site-header nav a[href^="#"]'));
   const linkForSection = new Map();
   navLinks.forEach((link) => {

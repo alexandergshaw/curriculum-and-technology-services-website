@@ -9,6 +9,14 @@ START = "<!-- START STATIC CASE: generated from teaching-sample/data/cases.json 
 END = "<!-- END STATIC CASE -->"
 
 
+def title_case_label(label):
+    """Match the interface-heading treatment in ai-example.js."""
+    minor_words = {"a", "an", "and", "as", "at", "but", "by", "for", "in", "nor", "of", "on", "or", "per", "the", "to", "via", "with"}
+    words = label.split(" ")
+    return " ".join(word.lower() if 0 < index < len(words) - 1 and word.lower() in minor_words
+                    else word[:1].upper() + word[1:] for index, word in enumerate(words))
+
+
 def render_case(data):
     case = data["cases"][0]
     source = next(doc for doc in data["documents"]
@@ -16,11 +24,11 @@ def render_case(data):
     baseline = next(doc for doc in data["documents"]
                     if (doc["id"], doc["version"]) == (case["baseline_source"]["id"], case["baseline_source"]["version"]))
     cite = ", ".join(f'{item["source_id"]} · v{item["version"]}' for item in case["response"]["citations"])
-    decision = {"accept": "Accept", "revise": "Revise", "refer": "Refer to a person"}[case["expected_decision"]]
+    decision = title_case_label({"accept": "Accept", "revise": "Revise", "refer": "Refer to a person"}[case["expected_decision"]])
     return f'''{START}
-          <div class="case-question"><h4 id="case-title">{escape(case['label'])}</h4><p id="case-question">{escape(case['question'])}</p></div>
-          <div class="lab-grid"><div><h3>Source evidence</h3><div class="source-list" id="case-sources"><article><h4>{escape(source['title'])}</h4><p class="source-meta">{escape(source['id'])} · v{source['version']} · {escape(source['status'])}</p><p>{escape(source['text'])}</p></article></div></div><div class="lab-responses"><article><h3>Search result</h3><p id="baseline-answer">{escape(baseline['text'])}</p></article><article><h3>Authored AI-style answer</h3><p id="model-answer">{escape(case['response']['text'])}</p><p class="source-meta" id="answer-citations">Cites: {escape(cite)}</p></article></div></div>
-          <div class="lab-fallback" id="lab-fallback"><h4 id="fallback-decision">Instructor judgment: {decision}</h4><p id="fallback-explanation">{escape(case['explanation'])} {escape(case['alternative_judgment'])}</p></div>
+          <div class="case-question"><h4 id="case-title">{escape(title_case_label(case['label']))}</h4><p id="case-question">{escape(case['question'])}</p></div>
+          <div class="lab-grid"><div><h3>Source Evidence</h3><div class="source-list" id="case-sources"><article><h4>{escape(source['title'])}</h4><p class="source-meta">{escape(source['id'])} · v{source['version']} · {escape(source['status'])}</p><p>{escape(source['text'])}</p></article></div></div><div class="lab-responses"><article><h3>Search Result</h3><p id="baseline-answer">{escape(baseline['text'])}</p></article><article><h3>Authored AI-Style Answer</h3><p id="model-answer">{escape(case['response']['text'])}</p><p class="source-meta" id="answer-citations">Cites: {escape(cite)}</p></article></div></div>
+          <div class="lab-fallback" id="lab-fallback"><h4 id="fallback-decision">Instructor Judgment: {decision}</h4><p id="fallback-explanation">{escape(case['explanation'])} {escape(case['alternative_judgment'])}</p></div>
           {END}'''
 
 

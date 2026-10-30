@@ -10,6 +10,13 @@
   const feedback = lab.querySelector("#case-feedback");
   const status = lab.querySelector("#lab-status");
   const choices = { accept: "Accept", revise: "Revise", refer: "Refer to a person" };
+  // Format interface headings only; quoted source titles and teaching text stay verbatim.
+  const titleCaseLabel = (label) => {
+    const words = label.split(" ");
+    return words.map((word, index) => index > 0 && index < words.length - 1
+      && /^(a|an|and|as|at|but|by|for|in|nor|of|on|or|per|the|to|via|with)$/i.test(word)
+      ? word.toLowerCase() : word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+  };
   let data;
   let current;
   const findSource = (id, version) => data.documents.find((item) => item.id === id && item.version === version);
@@ -18,7 +25,7 @@
   const showCase = (id, announce = true) => {
     current = data.cases.find((item) => item.id === id);
     if (!current) return;
-    setText("case-title", current.label);
+    setText("case-title", titleCaseLabel(current.label));
     setText("case-question", current.question);
     setText("case-count", `${String(data.cases.indexOf(current) + 1).padStart(2, "0")} / ${String(data.cases.length).padStart(2, "0")}`);
     const baseline = findSource(current.baseline_source.id, current.baseline_source.version);
@@ -27,7 +34,7 @@
     setText("answer-citations", current.response.citations.length
       ? `Cites: ${current.response.citations.map((citation) => `${citation.source_id} · v${citation.version}`).join(", ")}`
       : "No sources cited; response declines to answer.");
-    setText("fallback-decision", `Instructor judgment: ${choices[current.expected_decision]}`);
+    setText("fallback-decision", `Instructor Judgment: ${titleCaseLabel(choices[current.expected_decision])}`);
     setText("fallback-explanation", `${current.explanation} ${current.alternative_judgment}`);
     const sources = lab.querySelector("#case-sources");
     sources.replaceChildren();
@@ -61,7 +68,7 @@
       controls.querySelector("input").focus();
       return;
     }
-    setText("feedback-title", `Instructor judgment: ${choices[current.expected_decision]}`);
+    setText("feedback-title", `Instructor Judgment: ${titleCaseLabel(choices[current.expected_decision])}`);
     setText("feedback-choice", selected === current.expected_decision
       ? "Your decision matches the suggested judgment. The evidence and reasoning still matter."
       : `You chose ${choices[selected].toLowerCase()}. Compare your reasoning with the suggested judgment and alternatives.`);
@@ -109,7 +116,7 @@
       data.cases.forEach((item) => {
         const option = document.createElement("option");
         option.value = item.id;
-        option.textContent = item.label;
+        option.textContent = titleCaseLabel(item.label);
         selector.append(option);
       });
       showCase(data.cases[0].id, false);
