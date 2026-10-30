@@ -58,6 +58,8 @@ c.drawString(42, 670, "Modernize or Create")
 c.drawString(42, 634, "Computing Courses")
 y = paragraph(
     "Alex Shaw and Baha Marupov are software professionals and college educators. "
+    "Alex brings engineering leadership at Mutual of Omaha and teaching experience "
+    "at five colleges in Nebraska and Iowa. "
     "We help colleges update computing courses and programs, and create new courses.",
     42, 614, 528,
 )

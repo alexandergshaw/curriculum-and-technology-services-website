@@ -92,9 +92,17 @@ nav a { display: inline-flex; align-items: center; min-height: 44px; text-decora
 .working-together { margin-top: 1.5rem; max-width: 940px; }
 .working-together h3 { font-size: 1rem; font-weight: 600; letter-spacing: 0; }
 .working-together p { color: var(--muted); font-size: .875rem; margin-top: .5rem; }
-.experience-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+.experience-columns { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4rem; }
 .experience-columns h3 { font-size: 1.5625rem; }
-.experience-columns p { color: var(--muted); margin-top: 1rem; max-width: 530px; }
+.profile-role { color: var(--brand); font-size: .9375rem; margin-top: .5rem; }
+.profile-facts { margin: 1.75rem 0 0; }
+.profile-facts > div + div { margin-top: 1.5rem; }
+.profile-facts dt { color: var(--brand); font-size: 1rem; font-weight: 600; }
+.profile-facts dd { color: var(--muted); font-size: .9375rem; margin: .4rem 0 0; }
+.institution-list { margin-top: .65rem; }
+.institution-list li + li { margin-top: .25rem; }
+.profile-placeholder { color: var(--ink); background: var(--soft); border-left: 2px solid var(--brand); padding: .75rem 1rem; margin-top: 1.5rem; font-size: .8125rem; }
+.profile-placeholder strong { display: block; color: var(--brand); font-weight: 600; margin-bottom: .2rem; }
 .experience-note { font-size: .75rem; color: var(--muted); margin-top: 1.5rem; }
 .course-feature { display: grid; grid-template-columns: 1fr 2fr; gap: 3.125rem; }
 .example-title { font-size: 1.8125rem; max-width: 560px; }
@@ -183,6 +191,8 @@ nav a { display: inline-flex; align-items: center; min-height: 44px; text-decora
   .origin-story { margin-top: 1rem; max-width: none; }
   .section-heading { margin-bottom: 1.2rem; }
   .course-services, .experience-columns { gap: 1.5rem; }
+  .profile-facts > div, .profile-placeholder { break-inside: avoid; }
+  .profile-placeholder { background: white; color: #000; border-color: #000; break-after: avoid; }
   .course-services { display: block; }
   .course-service { display: block; padding: 1rem 0; break-inside: avoid; }
   .course-service > * + * { margin-top: .7rem; }
